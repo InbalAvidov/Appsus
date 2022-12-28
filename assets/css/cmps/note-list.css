@@ -1,0 +1,7 @@
+.pinned-note{
+    margin: 5px;
+    border: 3px solid lightgrey;
+}
+.pinned-note p {
+   font-weight: 600;
+}

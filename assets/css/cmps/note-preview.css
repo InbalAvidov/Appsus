@@ -16,3 +16,7 @@
 .note-btns button{
    cursor: pointer;
 }
+
+button.pin{
+   color: rgb(247, 214, 0);
+}

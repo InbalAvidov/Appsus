@@ -1,17 +1,39 @@
-const {useState,useEffect} = React
+const { useState, useEffect } = React
 
 import { NotePreview } from "./note-preview.jsx"
 
 
-export function NoteList({notes}) {
+export function NoteList({ notes, loadNotes }) {
+    const [pinned , setPinned] = useState([])
+    const [unPinned , setUnPinned] = useState([])
+
+    useEffect(()=>{
+        filterByPin()
+    },[notes])
+
+    function filterByPin(){
+        setPinned(notes.filter(note=> note.isPinned === true ))
+        setUnPinned(notes.filter(note=> note.isPinned === false ))
+    }
 
     return <div className="note-list">
-             {
-            notes.map(note => <div key={note.id}>
-                <NotePreview note={note} />
+        {pinned.length > 0 &&
+        <div className="pinned-note">
+        <p>pinned <span className="fa-solid fa-pin"></span></p>
+        {
+        pinned.map(note => <div key={note.id}>
+            <NotePreview note={note} loadNotes={loadNotes} />
+        </div>)
+        }
+        </div>}
+        {unPinned.length>0 && <div  className="un-pinned">
+        {
+            unPinned.map(note => <div key={note.id}>
+                <NotePreview note={note} loadNotes={loadNotes} />
             </div>)
         }
-        </div>
+        </div>}
+    </div>
 
 }
 

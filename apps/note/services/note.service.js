@@ -10,6 +10,8 @@ export const NoteService = {
     remove,
     save,
     getDefaultFilter,
+    addNote,
+    pinNote
 }
 
 function query(filterBy = getDefaultFilter()) {
@@ -28,7 +30,7 @@ function query(filterBy = getDefaultFilter()) {
 
 function get(noteId) {
     return storageService.get(NOTE_KEY, noteId)
-    
+
 }
 
 
@@ -58,18 +60,20 @@ function _createnotes() {
                 isPinned: true,
                 info: {
                     txt: "Fullstack Me Baby!"
-                }
+                },
+                isPinned:false
             },
             {
                 id: "n102",
                 type: "note-img",
                 info: {
-                    url:"assets/img/puppy.jpg",
+                    url: "assets/img/puppy.jpg",
                     title: "Bobi and Me"
                 },
                 style: {
                     backgroundColor: "#00d"
-                }
+                },
+                isPinned:false
             },
             {
                 id: "n103",
@@ -80,9 +84,52 @@ function _createnotes() {
                         { txt: "Driving liscence", doneAt: null },
                         { txt: "Coding power", doneAt: 187111111 }
                     ]
-                }
+                },
+                isPinned:false
             }
         ]
         utilService.saveToStorage(NOTE_KEY, notes)
     }
 }
+
+function addNote(text, noteType) {
+    if (noteType === 'note-txt') return _addTxtNote(text)
+    else if (noteType === 'note-img') return _addImgNote(text)
+    if (noteType === 'note-todos') return _addTodosNote(text)
+}
+
+function _addTxtNote(txt) {
+    const newNote = {
+        id: '',
+        type: "note-txt",
+        isPinned: false,
+        info: {
+            txt,
+        },
+        isPinned:false
+    }
+    return save(newNote)
+}
+
+function _addTodosNote(text) {
+    const todosText = text.split(',')
+    const label = todosText.splice(0, 1)
+    const todos = todosText.map((todo, idx) => ({ txt: todo, doneAt: null }))
+    const newNote = {
+        id: "",
+        type: "note-todos",
+        info: {
+            label,
+            todos,
+        },
+        isPinned:false
+    }
+    return save(newNote)
+
+}
+
+function pinNote(note) {
+    note.isPinned = !note.isPinned
+    return save(note)
+}
+

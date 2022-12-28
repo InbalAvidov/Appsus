@@ -13,3 +13,7 @@ background-color: var(--clr-bg);
     background-color: inherit;
 }
 
+.active{
+    background-color: var(--clr-active);
+    border-radius: 50%;
+}
