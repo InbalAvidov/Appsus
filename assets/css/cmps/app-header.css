@@ -1,24 +1,23 @@
 header {
-    background: lightcyan;
+    background-color: var(--clr-bg);
     border-bottom: 2px solid white;
 }
 
 .app-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px 0;
 }
 
-nav a {
-    margin: .5em;
+nav img.img-menu{
+    width: 2.5em;
+    margin: 0 1em;
 }
 
-nav a:active {
-    color: purple;
-}
+/* nav img.active {
+    /* color: darkblue; */
+    /* background-color: rgb(191, 191, 191); */
+    /* font-weight: bold;
+    text-decoration: overline; */
 
-nav a.active {
-    color: darkblue;
-    font-weight: bold;
-    text-decoration: overline;
-}

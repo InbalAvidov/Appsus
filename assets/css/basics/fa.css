@@ -8,7 +8,7 @@
     font-family: fa-regular ;
 }
 
-.fa-regular.fa-trash::before{
+.fa-solid.fa-trash::before{
     content: "\f2ed";
 }
 .fa-solid.fa-edit::before{
@@ -35,10 +35,10 @@
 .fa-regular.fa-image::before{
     content: "\f03e";
 }
-.fa-regular.fa-palette::before{
+.fa-solid.fa-palette::before{
     content: "\f53f";
 }
-.fa-regular.fa-list::before{
+.fa-solid.fa-list::before{
     content: "\f03a";
 }
 .fa-solid.fa-arrow-left::before{
