@@ -29,14 +29,33 @@ const criteria = {
 function query(filterBy = getDefaultFilter()) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
+            console.log(filterBy)
             console.log(mails)
             if (filterBy.txt) {
                 const regex = new RegExp(filterBy.txt, 'i')
-                mails = mails.filter(mail => regex.test(mail.body))
-            }
-            if (filterBy.category) {
-                const regex = new RegExp(filterBy.category, 'i')
                 mails = mails.filter(mail => regex.test(mail.subject))
+            }
+            console.log(filterBy.page)
+            switch (filterBy.page) {
+                case 'marked':
+                    console.log('marked')
+                    mails = mails.filter(mail => mail.marked)
+                    break;
+
+                case 'sent':
+                    console.log('sent')
+                    mails = mails.filter(mail => mail.from === loggedinUser.email)
+                    break;
+
+                case 'drafts':
+                    console.log('darfs')
+                    mails = mails.filter(mail => !mail.sentAt)
+                    break;
+
+                default:
+                    console.log('inbox')
+                    mails = mails.filter(mail => mail.to === loggedinUser.email)
+                    break;
             }
             return mails
         })
@@ -72,11 +91,20 @@ function debounce(func, wait) {
 }
 
 function getEmptyMail() {
-    return { to: '', subject: '' }
+    return {
+        id: utilService.makeId(),
+        subject: '',
+        body: '',
+        isRead: false,
+        isMarked: false,
+        sentAt: '',
+        to: '',
+        from: 'user@appsus.com'
+    }
 }
 
 function getDefaultFilter() {
-    return { txt: '', category: '' }
+    return { txt: '', page: 'inbox' }
 }
 
 
@@ -87,7 +115,9 @@ function _createMailList() {
         mails = [
             _createRandomInboxMail(),
             _createRandomInboxMail(),
-            _createRandomInboxMail()
+            _createRandomInboxMail(),
+            getEmptyMail(),
+            getEmptyMail()
         ]
         utilService.saveToStorage(MAIL_KEY, mails)
     }
@@ -99,6 +129,7 @@ function _createRandomInboxMail() {
         subject: utilService.makeLorem(2),
         body: utilService.makeLorem(20),
         isRead: false,
+        isMarked: false,
         sentAt: 1551133930594,
         to: 'user@appsus.com',
         from: 'messi@appsus.com'
