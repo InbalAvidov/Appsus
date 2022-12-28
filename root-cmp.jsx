@@ -1,5 +1,6 @@
 const { Route, Routes } = ReactRouterDOM
 const Router = ReactRouterDOM.HashRouter
+const {useState} = React
 
 import { AppHeader } from "./cmps/app-header.jsx"
 import { About } from "./views/about.jsx"
@@ -12,16 +13,17 @@ import { NoteIndex } from "./apps/note/views/note-index.jsx"
 
 
 export function App() {
+const [isHome, setIsHome] = useState(true)
     return <Router>
         <section className="app">
-            <AppHeader />
+        {!isHome && <AppHeader setIsHome={setIsHome} />}
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/mail" element={<MailIndex />} />
+                <Route path="/" element={<Home setIsHome={setIsHome} />} />
+                <Route path="/about" element={<About setIsHome={setIsHome} />} />
+                <Route path="/mail" element={<MailIndex setIsHome={setIsHome} />} />
                 <Route path="/mail/new" element={<MailNew />} />
                 <Route path="/mail/:mailId" element={<MailDetails />} />
-                <Route path="/note" element={<NoteIndex />} />
+                <Route path="/note" element={<NoteIndex setIsHome={setIsHome} />} />
             </Routes>
         </section>
     </Router>

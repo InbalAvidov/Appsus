@@ -1,0 +1,18 @@
+.note-preview{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin:10px auto;
+    width: 90%;
+    background-color:var(--clr-notebg);
+}
+
+.note-preview:hover .note-btns{
+   opacity: 0.8;
+}
+.note-preview .note-btns{
+   opacity: 0;
+}
+.note-btns button{
+   cursor: pointer;
+}
