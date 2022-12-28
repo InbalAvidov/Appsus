@@ -7,10 +7,10 @@ export function AppHeader({setIsHome}) {
             <h1>AppSus</h1>
         </Link>
         <nav>
-            <NavLink to="/" onClick={()=>setIsHome(true)}><img className="img-menu home" src="../assets/img/home.png"/></NavLink>
+            <NavLink to="/" onClick={()=>setIsHome(true)}><img className="img-menu home" src="./assets/img/home.png"/></NavLink>
             {/* <NavLink to="/about"><img className="img-menu" src="../assets/img/about.jpg"/></NavLink> */}
-            <NavLink to="/mail"><img className="img-menu mail" src="../assets/img/Gmail-logo.png"/></NavLink>
-            <NavLink to="/note"><img className="img-menu note" src="../assets/img/notes.png"/></NavLink>
+            <NavLink to="/mail"><img className="img-menu mail" src="./assets/img/mail.png"/></NavLink>
+            <NavLink to="/note"><img className="img-menu note" src="./assets/img/notes.png"/></NavLink>
         </nav>
     </header>
 }
