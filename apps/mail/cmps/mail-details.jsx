@@ -27,6 +27,6 @@ export function MailDetails() {
         <p>{mail.body}</p>
         <p>{new Date(mail.sentAt).toDateString()}</p>
         <Link to='/mail'>Back</Link>
-        <Link to='/mail/new'>Response</Link>
+        <Link to={`/mail/new/${mail.id}`}>Response</Link>
     </div>
 }

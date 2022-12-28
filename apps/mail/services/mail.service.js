@@ -8,7 +8,8 @@ export const mailService = {
     get,
     remove,
     save,
-    getDefaultFilter
+    getDefaultFilter,
+    getEmptyMail
 }
 
 
@@ -57,8 +58,6 @@ function save(mail) {
     }
 }
 
-
-
 function debounce(func, wait) {
     let timeout
     return function executedFunction(...args) {
@@ -70,6 +69,10 @@ function debounce(func, wait) {
         clearTimeout(timeout)
         timeout = setTimeout(later, wait)
     }
+}
+
+function getEmptyMail() {
+    return { to: '', subject: '' }
 }
 
 function getDefaultFilter() {
