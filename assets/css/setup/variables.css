@@ -1,0 +1,22 @@
+:root {
+    --main-bg-color: lightblue;
+}
+
+:root {
+    /* PALETTE */
+    --clr1: #ffff;
+    /* background-color for unread msg */
+    --clr2: #f2f6fc;
+    /* txt color */
+    --clr3-txt: #202124;
+    /* side bar background-color */
+    --clr4: #f6f8fc;
+
+    /* LABELS */
+    --labelSocial: #1a73e8;
+    --labelPromsion : #188038;
+}
+    /* TYPOGRAPHY */
+   
+
+

@@ -1,0 +1,55 @@
+.fa-solid{
+    font-family: fa-solid ;
+}
+.fa-brands{
+    font-family: fa-brands ;
+}
+.fa-regular{
+    font-family: fa-regular ;
+}
+
+.fa-regular.fa-trash::before{
+    content: "\f2ed";
+}
+.fa-solid.fa-edit::before{
+    content: "\f303" ;
+}
+.fa-solid.fa-inbok::before{
+    content: "\f01c";
+}
+.fa-regular.fa-star::before{
+    content: "\f01c";
+}
+.fa-regular.fa-sent::before{
+    content: "\f01c";
+}
+.fa-regular.fa-draft::before{
+    content: "\f15b";
+}
+.fa-regular.fa-bars::before{
+    content: "\f0c9";
+}
+.fa-regular.fa-search::before{
+    content: "\f002";
+}
+.fa-regular.fa-image::before{
+    content: "\f03e";
+}
+.fa-regular.fa-palette::before{
+    content: "\f53f";
+}
+.fa-regular.fa-list::before{
+    content: "\f03a";
+}
+.fa-solid.fa-arrow-left::before{
+    content: "\f060";
+}
+.fa-solid.fa-pin::before{
+    content: "\f08d";
+}
+.fa-solid.fa-envelope::before{
+    content: "\f0e0";
+}
+.fa-brands.fa-youtube::before{
+    content: "\f03a";
+}
