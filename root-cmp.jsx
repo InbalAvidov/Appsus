@@ -21,7 +21,7 @@ const [isHome, setIsHome] = useState(true)
                 <Route path="/" element={<Home setIsHome={setIsHome} />} />
                 <Route path="/about" element={<About setIsHome={setIsHome} />} />
                 <Route path="/mail" element={<MailIndex setIsHome={setIsHome} />} />
-                <Route path="/mail/new" element={<MailNew />} />
+                <Route path="/mail/new/:mailId" element={<MailNew />} />
                 <Route path="/mail/:mailId" element={<MailDetails />} />
                 <Route path="/note" element={<NoteIndex setIsHome={setIsHome} />} />
             </Routes>

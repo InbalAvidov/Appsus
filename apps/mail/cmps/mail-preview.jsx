@@ -1,8 +1,6 @@
 const { Link } = ReactRouterDOM
 
 export function MailsPreview({ mails }) {
-    console.log(mails)
-    if(mails.length<=0) return <p>Loading...</p>
     return < table >
         <tbody>
             <tr>
