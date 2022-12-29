@@ -21,12 +21,12 @@ export function NoteList({ notes, loadNotes }) {
         <div className="pinned-note">
             <p>pinned <span className="fa-solid fa-pin"></span></p>
         {
-            pinned.map(note => <NotePreview note={note} loadNotes={loadNotes} />)
+            pinned.map((note,idx) => <NotePreview key={idx} note={note} loadNotes={loadNotes} />)
         }
         </div>}
         {unPinned.length>0 && <div  className="un-pinned">
         {
-            unPinned.map(note =><NotePreview note={note} loadNotes={loadNotes} />)
+            unPinned.map((note,idx) =><NotePreview key={idx} note={note} loadNotes={loadNotes} />)
         }
         </div>}
     </div>

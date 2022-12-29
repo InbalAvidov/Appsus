@@ -25,13 +25,18 @@ export function NoteIndex() {
             })
     }
 
-    
+
     return <main className="main-notes main-layout full">
-        <NoteFilter setFilterBy={setFilterBy} />
-        <NoteAdd loadNotes={loadNotes} />
-        
-        {notes && <NoteList notes={notes} loadNotes={loadNotes} />}
-        {notes.length === 0 && <h2>No results...</h2>}
+        <div className="notes-container">
+
+        <NoteFilter setFilterBy={setFilterBy}/>
+        <div className="note-section">
+            <NoteAdd loadNotes={loadNotes} />
+
+            {notes && <NoteList notes={notes} loadNotes={loadNotes} />}
+            {notes.length === 0 && <h2>No results...</h2>}
+        </div>
+        </div>
     </main>
 
 }

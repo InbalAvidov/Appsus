@@ -4,6 +4,8 @@ const { useState, useEffect } = React
 
 export function NoteFilter({ setFilterBy }) {
     const [filterByToEdit, setFilterByToEdit] = useState(NoteService.getDefaultFilter())
+    const [checked, setChecked] = useState(false)
+
 
     useEffect(() => {
         setFilterBy(filterByToEdit)
@@ -11,6 +13,10 @@ export function NoteFilter({ setFilterBy }) {
 
     function handleChange({ target }) {
         let { value, name: field } = target
+        if (field === 'pin') {
+            setChecked(!checked)
+            value = !checked
+        }
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
@@ -18,19 +24,22 @@ export function NoteFilter({ setFilterBy }) {
         ev.preventDefault()
         setFilterBy(filterByToEdit)
     }
-    console.log(filterByToEdit);
     return <form className="note-filter">
-        <label htmlFor="type">Type</label>
-        <select name="type" id="type" onChange={handleChange}>
-            <option name="type" value="">All</option>
-            <option name="type" value="note-txt">Text</option>
-            <option name="type" value="note-todos">List</option>
-            <option name="type" value="note-img">Image</option>
-            <option name="type" value="note-video">video</option>
-        </select>
         <div className="search-bar">
-            <input name="txt" placeholder="search..." value={filterByToEdit.txt} onChange={handleChange} />
+            <input name="content" placeholder="search..." value={filterByToEdit.txt} onChange={handleChange} />
             <button onSubmit={onSubmitFilter}><span className="fa-solid fa-search"></span></button>
         </div>
+        <label htmlFor="pin">Pin
+            <input style={{accentColor: 'black'}} name="pin" id="pin" type="checkbox" onChange={handleChange} />
+        </label>
+        <label htmlFor="type">Type
+            <select name="type" id="type" onChange={handleChange}>
+                <option name="type" value="">All</option>
+                <option name="type" value="note-txt">Text</option>
+                <option name="type" value="note-todos">List</option>
+                <option name="type" value="note-img">Image</option>
+                <option name="type" value="note-video">video</option>
+            </select>
+        </label>
     </form>
 }
