@@ -29,7 +29,7 @@
 .fa-regular.fa-bars::before{
     content: "\f0c9";
 }
-.fa-regular.fa-search::before{
+.fa-solid.fa-search::before{
     content: "\f002";
 }
 .fa-regular.fa-image::before{
@@ -55,4 +55,7 @@
 }
 .fa-solid.fa-done::before{
     content: "\f058";
+}
+.fa-solid.fa-copy::before{
+    content: "\f0c5";
 }

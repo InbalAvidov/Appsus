@@ -19,7 +19,7 @@ export function App() {
     console.log(page);
     console.log((page.includes('mail') || page.includes('note') ));
     return <Router>
-        <section className="app">
+        <section className="app main-layout">
             <AppHeader style={{ display: (page.includes('mail') || page.includes('note') ) ? 'block' : 'none' }}/>
             <Routes>
                 <Route path="/" element={<Home />} />

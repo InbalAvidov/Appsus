@@ -12,11 +12,5 @@ export function Home() {
                 we hope you'll enjoy this platform!
             </p>
         </div>
-                <nav className="home-links">
-                    <NavLink to="/" ><img className="img-home home" src="./assets/img/home.png" /></NavLink>
-                    {/* <NavLink to="/about"><img classNameName="img-menu" src="../assets/img/about.jpg"/></NavLink> */}
-                    <NavLink to="/mail" ><img className="img-home mail" src="./assets/img/mail.png" /></NavLink>
-                    <NavLink to="/note" ><img className="img-home note" src="./assets/img/notes.png" /></NavLink>
-                </nav>
     </div>
 }

@@ -1,0 +1,10 @@
+.note-filter{
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: var(--clr1);
+
+}
+
+.note-filter select{
+   display: inline-block;
+}

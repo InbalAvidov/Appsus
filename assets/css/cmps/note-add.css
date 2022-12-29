@@ -3,11 +3,6 @@
     padding: 1em;
 }
 
-.note-add input,button,label{
-    border: none;
-    background-color: inherit;
-    cursor: pointer;
-}
 
 .active{
     background-color: var(--clr-active);

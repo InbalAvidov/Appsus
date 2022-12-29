@@ -32,16 +32,25 @@ export function NotePreview({note ,loadNotes}) {
         setIsEdit(!isEdit)
     }
 
+    function onDuplicateNote(){
+        note.id = ''
+        console.log(note);
+        NoteService.save(note).then(note => {
+            NoteService.query().then(loadNotes())
+        })
+    }
+
     return <div className="note-preview"  style={{backgroundColor: `${bgcColor}`}}>
         {!isEdit && <NotePreviewByType note={note} loadNotes={loadNotes} />}
         {isEdit && <div className="nested-route">
             <NoteEdit note={note} loadNotes={loadNotes}/>
         </div>}
         <div className="note-btns">
-        <button onClick={onPinNote} className={note.isPinned ? "pin": ''}><span className="fa-solid fa-pin"></span></button>
-        <button onClick={onRemoveNote}><span className="fa-solid fa-trash"></span></button>
-        <button><span className="fa-solid fa-palette" onClick={() => setIsPalette(true)}></span></button>
-        <button onClick={onEditNote}><span className={isEdit ?"" :"fa-solid fa-edit"} ></span></button>
+        <button title="Pin" onClick={onPinNote} className={note.isPinned ? "pin": ''}><span className="fa-solid fa-pin"></span></button>
+        <button title="Delete" onClick={onRemoveNote}><span className="fa-solid fa-trash"></span></button>
+        <button title="Duplicate" onClick={onDuplicateNote}><span className="fa-solid fa-copy"></span></button>
+        <button title="Change color"><span className="fa-solid fa-palette" onClick={() => setIsPalette(true)}></span></button>
+        <button title="Edit" onClick={onEditNote}><span className={isEdit ?"" :"fa-solid fa-edit"} ></span></button>
         {isPalette && <input type="color" value={bgcColor} onChange={(event) => onChangeColor(event)} />}
     </div>
     </div> 
