@@ -19,9 +19,10 @@ export function MailList() {
             setIsLoading(false)
         })
     }
+    console.log(mails);
     return <div>
         <MailFilter filter={filter} setFilter={setFilter} />
-        {!isLoading && <MailsPreview mails={mails} />}
+        {!isLoading && <MailsPreview mails={mails} loadMails={loadMails} />}
         {isLoading && <p> Loading...</p>}
         {!mails.length && <p>No items to show..</p>}
     </div >

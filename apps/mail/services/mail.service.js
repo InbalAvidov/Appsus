@@ -9,7 +9,8 @@ export const mailService = {
     remove,
     save,
     getDefaultFilter,
-    getEmptyMail
+    getEmptyMail,
+    debounce
 }
 
 
@@ -29,13 +30,11 @@ const criteria = {
 function query(filterBy = getDefaultFilter()) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            console.log(filterBy)
             console.log(mails)
             if (filterBy.txt) {
                 const regex = new RegExp(filterBy.txt, 'i')
                 mails = mails.filter(mail => regex.test(mail.subject))
             }
-            console.log(filterBy.page)
             switch (filterBy.page) {
                 case 'marked':
                     console.log('marked')
@@ -44,7 +43,7 @@ function query(filterBy = getDefaultFilter()) {
 
                 case 'sent':
                     console.log('sent')
-                    mails = mails.filter(mail => mail.from === loggedinUser.email)
+                    mails = mails.filter(mail => mail.from === loggedinUser.email && mail.sentAt)
                     break;
 
                 case 'drafts':
@@ -92,12 +91,25 @@ function debounce(func, wait) {
 
 function getEmptyMail() {
     return {
-        id: utilService.makeId(),
+        id: '',
         subject: '',
         body: '',
         isRead: false,
         isMarked: false,
         sentAt: '',
+        to: '',
+        from: 'user@appsus.com'
+    }
+}
+
+function getEmptySentMail() {
+    return {
+        id: utilService.makeId(),
+        subject: '',
+        body: '',
+        isRead: false,
+        isMarked: false,
+        sentAt: Date.now(),
         to: '',
         from: 'user@appsus.com'
     }
@@ -116,7 +128,8 @@ function _createMailList() {
             _createRandomInboxMail(),
             _createRandomInboxMail(),
             _createRandomInboxMail(),
-            getEmptyMail(),
+            getEmptySentMail(),
+            getEmptySentMail(),
             getEmptyMail()
         ]
         utilService.saveToStorage(MAIL_KEY, mails)
