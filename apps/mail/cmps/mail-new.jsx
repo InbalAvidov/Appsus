@@ -9,41 +9,31 @@ export function MailNew() {
     const [newMail, setNewMail] = useState(mailService.getEmptyMail())
     useEffect(() => {
         if (params.mailId) {
+            console.log('have mail id')
             mailService.get(params.mailId)
                 .then(mail => {
                     setNewMail({ ...mail, to: mail.from, subject: mail.subject })
-                }).catch(mailService.save(newMail)
-                    .then(updatedMail => {
-                        setNewMail(updatedMail)
-                    }))
+                })
         }
+        // else mailService.save({ ...newMail }).then(setNewMail)
     }, [])
 
-    useEffect(() => { mailService.save(newMail) }, [newMail])
 
     function handleChange({ target }) {
         let { value, name: field } = target
-        setNewMail((prevmail) => {
-            console.log(prevmail)
-            return { ...prevmail, [field]: value }
-        })
-        console.log(newMail)
+        setNewMail((prevmail) => ({ ...prevmail, [field]: value }))
+        console.log('newMail', newMail)
+        // mailService.save(newMail)
     }
 
     function click(ev, val) {
         ev.preventDefault()
-        switch (val) {
-            case 'nev':
-                nevigate(-1)
-                break;
-            default:
-                newMail.sentAt = Date.now()
-                nevigate('/mail')
-                break;
-        }
+        if (val === 'send') newMail.sentAt = Date.now()
+        mailService.save(newMail)
+        nevigate(-1)
     }
 
-    return <form>
+    return <form className="mail-new">
         <label htmlFor="to">To:
             <input
                 type="text"
@@ -72,6 +62,6 @@ export function MailNew() {
             />
         </label>
         <button onClick={(ev) => { click(ev, 'send') }}>Send</button>
-        <button onClick={(ev) => { click(ev, 'nev') }}>Back</button>
+        <button onClick={(ev) => { click(ev, 'back') }}>Back</button>
     </form>
 }

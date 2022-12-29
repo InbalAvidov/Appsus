@@ -1,9 +1,9 @@
 import { mailService } from "../services/mail.service.js";
-import { MailFilter } from "./mail-filter.jsx";
-import { MailsPreview } from "./mail-preview.jsx";
+import { MailNav } from "./mail-filter.jsx";
+import { MailPreview } from "./mail-preview.jsx";
 
-const { useState, useEffect } = React
 const { Link } = ReactRouterDOM
+const { useState, useEffect } = React
 
 export function MailList() {
     const [mails, setMails] = useState([])
@@ -19,10 +19,19 @@ export function MailList() {
             setIsLoading(false)
         })
     }
-    console.log(mails);
-    return <div>
-        <MailFilter filter={filter} setFilter={setFilter} />
-        {!isLoading && <MailsPreview mails={mails} loadMails={loadMails} />}
+    return <div className="main-mail">
+        <MailNav filter={filter} setFilter={setFilter} />
+        {!isLoading && <table>
+            <tbody className="mail-list">
+                <tr>
+                    <th>From</th>
+                    <th>Subject</th>
+                    <th>At</th>
+                </tr>
+                {mails.map(mail => {
+                    return <MailPreview mail={mail} key={mail.id} />
+                })}</tbody>
+        </table >}
         {isLoading && <p> Loading...</p>}
         {!mails.length && <p>No items to show..</p>}
     </div >

@@ -7,6 +7,7 @@ body {
 }
 
 html {
+    background-color: var(--clr-bg);
     font-size: 14px;
     text-align: start;
     font-family: Google Sans, roboto, Helvetica, Arial, sans-serif;
