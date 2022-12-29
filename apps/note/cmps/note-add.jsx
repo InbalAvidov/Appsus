@@ -2,7 +2,7 @@ import { NoteService } from "../services/note.service.js"
 
 const { useState, useEffect } = React
 
-export function NoteAdd({ loadNotes, note }) {
+export function NoteAdd({ loadNotes, note, setIsEdit }) {
     const [noteType, setNoteType] = useState('note-txt')
     const [content, setContent] = useState('')
 
@@ -18,10 +18,14 @@ export function NoteAdd({ loadNotes, note }) {
         })
     }
 
-    function onSaveNote() {
-        NoteService.addNote(content, note.type).then(() =>
+    function onSaveNote(ev) {
+        ev.stopPropagation()
+        NoteService.addNote(content, note.type, note.isPinned).then(() =>
             NoteService.remove(note.id))
-            .then(() => loadNotes())
+            .then(() => {
+                setIsEdit(false)
+                loadNotes()
+            })
 
     }
 
@@ -44,7 +48,6 @@ export function NoteAdd({ loadNotes, note }) {
         reader.readAsDataURL(ev.target.files[0])
     }
 
-
     return <div className="note-add flex space-between">
         <input placeholder={noteType === 'note-img' ? "upload a photo" : noteType === 'note-todos' ? 'Title,task,task...' : noteType === 'note-txt' ? 'Take a note' : 'https://youtu.be/XXXXXXX'} onChange={handleChange} value={content} />
         {!note && <div className="note-add-btn">
@@ -57,12 +60,14 @@ export function NoteAdd({ loadNotes, note }) {
             <button title="Text" onClick={() => setNoteType('note-txt')} className={noteType === 'note-txt' ? 'active' : ''}><span className="fa-solid fa-edit"></span></button>
             <button onClick={onAddNote}>Add</button>
         </div>}
-        {note && note.type === 'note-img' && <div>
-         <button>
-                <input id="img" style={{ display: 'none' }} type="file" className="file-input btn" onChange={onImgInput} />
-                <label htmlFor="img" className="fa-regular fa-image" title="Upload photo"></label>
-            </button>
-        {note && <button onClick={onSaveNote}><span className="fa-solid fa-done" ></span></button>}
-         </div>}
+        {note &&
+            <div>
+                <button onClick={onSaveNote}><span className="fa-solid fa-done" ></span></button>
+                {note.type === 'note-img' &&
+                    <button>
+                        <input id="img" style={{ display: 'none' }} type="file" className="file-input btn" onChange={onImgInput} />
+                        <label htmlFor="img" className="fa-regular fa-image" title="Upload photo"></label>
+                    </button>}
+            </div>}
     </div>
 }

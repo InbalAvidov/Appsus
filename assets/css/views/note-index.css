@@ -1,5 +1,27 @@
-.main-notes{
-text-align: center;
-background-color: var(--clr-bg);
+.main-notes {
+    text-align: center;
+    background-color: var(--clr-bg);
 }
 
+.notes-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.note-filter {
+    width: 20%;
+}
+
+.note-section {
+    width: 75%;
+}
+
+@media (min-width:740px){
+    .note-filter {
+        width: 15%;
+    }
+    
+    .note-section {
+        width: 80%;
+    }  
+}

@@ -15,10 +15,10 @@ import { NoteEdit } from "./apps/note/cmps/note-edit.jsx"
 
 export function App() {
 
-    const page = window.location.href
+   
     return <Router>
         <section className="app main-layout">
-            <AppHeader style={{ display: (page.includes('mail') || page.includes('note') ) ? 'block' : 'none' }}/>
+            <AppHeader />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
@@ -27,7 +27,7 @@ export function App() {
                 <Route path="/mail/new" element={<MailNew />} />
                 <Route path="/mail/:mailId" element={<MailDetails />} />
                 <Route path="/note" element={<NoteIndex />}>
-                    <Route path="/note/edit/:noteId" element={<NoteEdit />} />
+                    <Route path="/note/edit/:noteId" element={<NoteEdit /> }/>
                 </Route>
             </Routes>
         </section>
