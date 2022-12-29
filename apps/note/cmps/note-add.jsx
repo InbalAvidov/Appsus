@@ -1,3 +1,4 @@
+import { showSuccessMsg } from "../../../services/event-bus.service.js"
 import { NoteService } from "../services/note.service.js"
 
 const { useState, useEffect } = React
@@ -12,10 +13,11 @@ export function NoteAdd({ loadNotes, note, setIsEdit }) {
     }, [])
 
     function onAddNote() {
-        NoteService.addNote(content, noteType).then(note => {
+        NoteService.addNote(content, noteType, false).then(note => {
             setContent('')
             loadNotes()
         })
+        showSuccessMsg('Your note was added successfully!')
     }
 
     function onSaveNote(ev) {
@@ -26,6 +28,7 @@ export function NoteAdd({ loadNotes, note, setIsEdit }) {
                 setIsEdit(false)
                 loadNotes()
             })
+        showSuccessMsg('Your note was saved successfully!')
 
     }
 

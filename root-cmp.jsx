@@ -10,6 +10,7 @@ import { MailDetails } from "./apps/mail/cmps/mail-details.jsx"
 import { MailNew } from "./apps/mail/cmps/mail-new.jsx"
 import { NoteIndex } from "./apps/note/views/note-index.jsx"
 import { NoteEdit } from "./apps/note/cmps/note-edit.jsx"
+import { UserMsg } from "./cmps/user-msg.jsx"
 
 
 
@@ -31,6 +32,7 @@ export function App() {
                 </Route>
             </Routes>
         </section>
+        <UserMsg/>
     </Router>
 
 }

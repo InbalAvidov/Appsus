@@ -4,6 +4,7 @@ const { useRef, useState, useEffect } = React
 import { NoteService } from "../services/note.service.js"
 import { NotePreviewByType } from "./note-preview-type.jsx"
 import { NoteEdit } from "./note-edit.jsx"
+import { showSuccessMsg } from "../../../services/event-bus.service.js"
 
 export function NotePreview({ note, loadNotes }) {
     const [isPalette, setIsPalette] = useState(false)
@@ -14,6 +15,7 @@ export function NotePreview({ note, loadNotes }) {
     function onRemoveNote(ev) {
         ev.stopPropagation()
         NoteService.remove(note.id).then(note => {
+            showSuccessMsg('Your note was deleted!')
             NoteService.query().then(loadNotes())
         })
     }
