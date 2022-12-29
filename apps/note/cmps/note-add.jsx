@@ -52,9 +52,9 @@ export function NoteAdd({ loadNotes, note }) {
                 <input id="img" style={{ display: 'none' }} type="file" className="file-input btn" onChange={onImgInput} />
                 <label htmlFor="img" className="fa-regular fa-image" title="Upload photo"></label>
             </button>
-            <button onClick={() => setNoteType('note-video')} className={noteType === 'note-video' ? 'active' : ''}><span className="fa-solid fa-play"></span></button>
-            <button onClick={() => setNoteType('note-todos')} className={noteType === 'note-todos' ? 'active' : ''}><span className="fa-solid fa-list"></span></button>
-            <button onClick={() => setNoteType('note-txt')} className={noteType === 'note-txt' ? 'active' : ''}><span className="fa-solid fa-edit"></span></button>
+            <button title="Video" onClick={() => setNoteType('note-video')} className={noteType === 'note-video' ? 'active' : ''}><span className="fa-solid fa-play"></span></button>
+            <button title="List" onClick={() => setNoteType('note-todos')} className={noteType === 'note-todos' ? 'active' : ''}><span className="fa-solid fa-list"></span></button>
+            <button title="Text" onClick={() => setNoteType('note-txt')} className={noteType === 'note-txt' ? 'active' : ''}><span className="fa-solid fa-edit"></span></button>
             <button onClick={onAddNote}>Add</button>
         </div>}
         {note && note.type === 'note-img' && <div>

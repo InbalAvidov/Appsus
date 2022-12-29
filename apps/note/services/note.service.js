@@ -12,7 +12,7 @@ export const NoteService = {
     getDefaultFilter,
     addNote,
     pinNote,
-    getNoteContent
+    getNoteContent,
 }
 
 function query(filterBy = getDefaultFilter()) {
@@ -20,10 +20,10 @@ function query(filterBy = getDefaultFilter()) {
         .then(notes => {
             if (filterBy.txt) {
                 const regex = new RegExp(filterBy.txt, 'i')
-                notes = notes.filter(note => regex.test(note.vendor))
+                notes = notes.filter(note => regex.test(note.content))
             }
-            if (filterBy.minSpeed) {
-                notes = notes.filter(note => note.maxSpeed >= filterBy.minSpeed)
+            if (filterBy.type) {
+                notes = notes.filter(note => note.type === filterBy.type)
             }
             return notes
         })
@@ -63,20 +63,22 @@ function _createnotes() {
                     txt: "Fullstack Me Baby!"
                 },
                 isPinned: false,
-                isEdit: false
+                isEdit: false,
+                content:"Fullstack Me Baby!"
             },
             {
                 id: "n102",
                 type: "note-img",
                 info: {
                     url: "assets/img/puppy.jpg",
-                    title: "Bobi and Me"
+                    title: "Image"
                 },
                 style: {
                     backgroundColor: "#00d"
                 },
                 isPinned: false,
-                isEdit: false
+                isEdit: false,
+                content:"assets/img/puppy.jpg"
             },
             {
                 id: "n103",
@@ -89,7 +91,8 @@ function _createnotes() {
                     ]
                 },
                 isPinned: false,
-                isEdit: false
+                isEdit: false,
+                content:"Get my stuff together,Driving liscence,Coding power"
             }
         ]
         utilService.saveToStorage(NOTE_KEY, notes)
@@ -112,7 +115,8 @@ function _addTxtNote(txt) {
             txt,
         },
         isPinned: false,
-        isEdit: false
+        isEdit: false,
+        content:txt
     }
     return save(newNote)
 }
@@ -129,7 +133,9 @@ function _addTodosNote(text) {
             todos,
         },
         isPinned: false,
-        isEdit: false
+        isEdit: false,
+        content:todosText.join('')
+
     }
     return save(newNote)
 
@@ -146,7 +152,9 @@ function _addImgNote(src) {
             backgroundColor: "#00d"
         },
         isPinned: false,
-        isEdit: false
+        isEdit: false,
+        content:src
+
     }
     return save(newNote)
 }
@@ -161,7 +169,9 @@ function _addVideoNote(content) {
         videoId,
         content,
         isPinned: false,
-        isEdit: false
+        isEdit: false,
+        content:contentArr.join('')
+
     }
     return save(newNote)
 
@@ -181,4 +191,5 @@ function getNoteContent(note){
         return [note.info.label,...todosText].join(',')
     }
 }
+
 

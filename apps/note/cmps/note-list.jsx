@@ -19,18 +19,14 @@ export function NoteList({ notes, loadNotes }) {
     return <div className="note-list">
         {pinned.length > 0 &&
         <div className="pinned-note">
-        <p>pinned <span className="fa-solid fa-pin"></span></p>
+            <p>pinned <span className="fa-solid fa-pin"></span></p>
         {
-        pinned.map(note => <div key={note.id}>
-            <NotePreview note={note} loadNotes={loadNotes} />
-        </div>)
+            pinned.map(note => <NotePreview note={note} loadNotes={loadNotes} />)
         }
         </div>}
         {unPinned.length>0 && <div  className="un-pinned">
         {
-            unPinned.map(note => <div key={note.id}>
-                <NotePreview note={note} loadNotes={loadNotes} />
-            </div>)
+            unPinned.map(note =><NotePreview note={note} loadNotes={loadNotes} />)
         }
         </div>}
     </div>

@@ -1,7 +1,20 @@
-.pinned-note{
-    margin: 5px;
+.un-pinned {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.pinned-note {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.pinned-note {
+    margin: 5px 0;
     border: 3px solid lightgrey;
 }
+
 .pinned-note p {
-   font-weight: 600;
+    font-weight: 600;
 }

@@ -17,7 +17,7 @@ export function App() {
 
     const page = window.location.href
     return <Router>
-        <section className="app">
+        <section className="app main-layout">
             <AppHeader style={{ display: (page.includes('mail') || page.includes('note') ) ? 'block' : 'none' }}/>
             <Routes>
                 <Route path="/" element={<Home />} />
