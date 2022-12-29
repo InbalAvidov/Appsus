@@ -1,7 +1,6 @@
 import { MailList } from "../cmps/mail-list.jsx";
 
-export function MailIndex({setIsHome}) {
-    setIsHome(false)
+export function MailIndex() {
     return <div>
         <MailList/>
     </div>

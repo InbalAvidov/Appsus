@@ -50,6 +50,9 @@
 .fa-solid.fa-envelope::before{
     content: "\f0e0";
 }
-.fa-brands.fa-youtube::before{
-    content: "\f03a";
+.fa-solid.fa-play::before{
+    content: "\f04b";
+}
+.fa-solid.fa-done::before{
+    content: "\f058";
 }

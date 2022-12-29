@@ -1,10 +1,10 @@
 @font-face {
     font-family: fa-solid;
-    src: '../../fonts/fa-solid-900.ttf';
+    src: url(../../fonts/fa-solid-900.ttf);
 }
 @font-face {
     font-family: fa-brands;
-    src: '../../fonts/fa-brands-400.ttf';
+    src: url(../../fonts/fa-brands-400.ttf);
 }
 @font-face {
     font-family: fa-regular;

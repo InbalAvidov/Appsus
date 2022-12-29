@@ -24,5 +24,6 @@
 @import './cmps/app-header.css';
 @import './cmps/note-preview.css';
 @import './cmps/note-list.css';
+@import './cmps/note-add.css';
 
 /* @import './apps/mail/cmps/mail-list.css'; */

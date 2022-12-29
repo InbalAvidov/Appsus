@@ -11,7 +11,8 @@ export const NoteService = {
     save,
     getDefaultFilter,
     addNote,
-    pinNote
+    pinNote,
+    getNoteContent
 }
 
 function query(filterBy = getDefaultFilter()) {
@@ -61,7 +62,8 @@ function _createnotes() {
                 info: {
                     txt: "Fullstack Me Baby!"
                 },
-                isPinned:false
+                isPinned: false,
+                isEdit: false
             },
             {
                 id: "n102",
@@ -73,7 +75,8 @@ function _createnotes() {
                 style: {
                     backgroundColor: "#00d"
                 },
-                isPinned:false
+                isPinned: false,
+                isEdit: false
             },
             {
                 id: "n103",
@@ -85,17 +88,19 @@ function _createnotes() {
                         { txt: "Coding power", doneAt: 187111111 }
                     ]
                 },
-                isPinned:false
+                isPinned: false,
+                isEdit: false
             }
         ]
         utilService.saveToStorage(NOTE_KEY, notes)
     }
 }
 
-function addNote(text, noteType) {
-    if (noteType === 'note-txt') return _addTxtNote(text)
-    else if (noteType === 'note-img') return _addImgNote(text)
-    if (noteType === 'note-todos') return _addTodosNote(text)
+function addNote(content, noteType) {
+    if (noteType === 'note-txt') return _addTxtNote(content)
+    else if (noteType === 'note-img') return _addImgNote(content)
+    else if (noteType === 'note-video') return _addVideoNote(content)
+    if (noteType === 'note-todos') return _addTodosNote(content)
 }
 
 function _addTxtNote(txt) {
@@ -106,7 +111,8 @@ function _addTxtNote(txt) {
         info: {
             txt,
         },
-        isPinned:false
+        isPinned: false,
+        isEdit: false
     }
     return save(newNote)
 }
@@ -122,14 +128,57 @@ function _addTodosNote(text) {
             label,
             todos,
         },
-        isPinned:false
+        isPinned: false,
+        isEdit: false
     }
     return save(newNote)
 
 }
+function _addImgNote(src) {
+    const newNote = {
+        id: '',
+        type: "note-img",
+        info: {
+            url: src,
+            title: "Bobi and Me"
+        },
+        style: {
+            backgroundColor: "#00d"
+        },
+        isPinned: false,
+        isEdit: false
+    }
+    return save(newNote)
+}
 
+function _addVideoNote(content) {
+    const contentArr = content.split('/')
+    const videoId = contentArr[contentArr-1]
+    const newNote = {
+        id: '',
+        type: "note-video",
+        title: "My Video",
+        videoId,
+        content,
+        isPinned: false,
+        isEdit: false
+    }
+    return save(newNote)
+
+}
 function pinNote(note) {
     note.isPinned = !note.isPinned
     return save(note)
+}
+
+function getNoteContent(note){
+    if (note.type === 'note-txt') return note.info.txt
+    else if (note.type === 'note-img') return note.info.url
+    else if (note.type === 'note-video') return note.content
+    if (note.type === 'note-todos'){
+        const todos = [...note.info.todos]
+        const todosText = todos.map(todo => todo.txt)
+        return [note.info.label,...todosText].join(',')
+    }
 }
 

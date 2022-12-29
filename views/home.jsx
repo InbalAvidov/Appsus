@@ -1,6 +1,5 @@
 const { Link, NavLink } = ReactRouterDOM
-export function Home({setIsHome}) {
-setIsHome(true)
+export function Home() {
     return <div className="home-page">
         <div className="home-text">
             <h1>

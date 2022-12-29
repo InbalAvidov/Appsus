@@ -1,0 +1,15 @@
+.note-add{
+    background-color: var(--clr1);
+    padding: 1em;
+}
+
+.note-add input,button,label{
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.active{
+    background-color: var(--clr-active);
+    border-radius: 50%;
+}

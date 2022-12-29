@@ -3,17 +3,3 @@ text-align: center;
 background-color: var(--clr-bg);
 }
 
-.note-add{
-    background-color: var(--clr1);
-    padding: 1em;
-}
-
-.note-add input,button{
-    border: none;
-    background-color: inherit;
-}
-
-.active{
-    background-color: var(--clr-active);
-    border-radius: 50%;
-}
