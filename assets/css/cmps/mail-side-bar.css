@@ -1,0 +1,62 @@
+.side-bar {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    flex-grow: 1;
+    z-index: 1;
+}
+
+.side-bar:hover {
+    
+}
+
+.new {
+    background-color: var(--clr5);
+    padding: 12px;
+    border-radius: 8px;
+    transition: padding .8s;
+}
+
+.new:hover::after {
+    padding: 50px;
+    content: 'New Email';
+    /* width: auto; */
+}
+
+.inbox {
+    padding: 8px;
+}
+
+.inbox:hover::after {
+    padding: 50px;
+    content: 'Inbox';
+}
+
+.marked {
+    padding: 8px;
+}
+
+.marked:hover::after {
+    content: 'Starred';
+    padding: 50px;
+}
+
+.sent {
+    padding: 8px;
+}
+
+.sent:hover::after {
+    content: 'Sent';
+    padding: 50px;
+}
+
+
+.drafts {
+    padding: 8px;;
+}
+
+.drafts:hover::after {
+    content: 'Drafts';
+    padding: 50px;
+}

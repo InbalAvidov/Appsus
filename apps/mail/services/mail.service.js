@@ -95,7 +95,7 @@ function getEmptyMail() {
         subject: '',
         body: '',
         isRead: false,
-        isMarked: false,
+        isStarred: false,
         sentAt: '',
         to: '',
         from: 'user@appsus.com'
@@ -108,7 +108,7 @@ function getEmptySentMail() {
         subject: '',
         body: '',
         isRead: false,
-        isMarked: false,
+        isStarred: false,
         sentAt: Date.now(),
         to: '',
         from: 'user@appsus.com'
@@ -142,7 +142,7 @@ function _createRandomInboxMail() {
         subject: utilService.makeLorem(2),
         body: utilService.makeLorem(20),
         isRead: false,
-        isMarked: false,
+        isStarred: false,
         sentAt: 1551133930594,
         to: 'user@appsus.com',
         from: 'messi@appsus.com'

@@ -1,0 +1,14 @@
+
+.main-mail{
+    display: flex;
+    width: 100%;
+}
+
+tr:nth-child(odd){
+    background-color: grey;
+}
+
+table{
+    display: flex;
+    flex-grow: 2;
+}

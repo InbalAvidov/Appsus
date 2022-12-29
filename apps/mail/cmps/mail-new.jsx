@@ -1,4 +1,3 @@
-import { utilService } from "../../../services/util.service.js"
 import { mailService } from "../services/mail.service.js"
 
 const { useParams, useNavigate, Link } = ReactRouterDOM
@@ -16,27 +15,22 @@ export function MailNew() {
                     setNewMail({ ...mail, to: mail.from, subject: mail.subject })
                 })
         }
-        else mailService.save({ ...newMail }).then(setNewMail)
+        // else mailService.save({ ...newMail }).then(setNewMail)
     }, [])
-    
+
+
     function handleChange({ target }) {
         let { value, name: field } = target
-        console.log('newMail', newMail)
         setNewMail((prevmail) => ({ ...prevmail, [field]: value }))
-        mailService.save(newMail)
+        console.log('newMail', newMail)
+        // mailService.save(newMail)
     }
 
     function click(ev, val) {
         ev.preventDefault()
-        switch (val) {
-            case 'nev':
-                nevigate(-1)
-                break;
-            default:
-                newMail.sentAt = Date.now()
-                nevigate('/mail')
-                break;
-        }
+        if (val === 'send') newMail.sentAt = Date.now()
+        mailService.save(newMail)
+        nevigate(-1)
     }
 
     return <form className="mail-new">
@@ -68,6 +62,6 @@ export function MailNew() {
             />
         </label>
         <button onClick={(ev) => { click(ev, 'send') }}>Send</button>
-        <button onClick={(ev) => { click(ev, 'nev') }}>Back</button>
+        <button onClick={(ev) => { click(ev, 'back') }}>Back</button>
     </form>
 }
