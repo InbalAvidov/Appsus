@@ -1,3 +1,4 @@
+import { utilService } from "../../../services/util.service.js"
 import { mailService } from "../services/mail.service.js"
 
 const { useParams, useNavigate, Link } = ReactRouterDOM
@@ -9,25 +10,20 @@ export function MailNew() {
     const [newMail, setNewMail] = useState(mailService.getEmptyMail())
     useEffect(() => {
         if (params.mailId) {
+            console.log('have mail id')
             mailService.get(params.mailId)
                 .then(mail => {
                     setNewMail({ ...mail, to: mail.from, subject: mail.subject })
-                }).catch(mailService.save(newMail)
-                    .then(updatedMail => {
-                        setNewMail(updatedMail)
-                    }))
+                })
         }
+        else mailService.save({ ...newMail }).then(setNewMail)
     }, [])
-
-    useEffect(() => { mailService.save(newMail) }, [newMail])
-
+    
     function handleChange({ target }) {
         let { value, name: field } = target
-        setNewMail((prevmail) => {
-            console.log(prevmail)
-            return { ...prevmail, [field]: value }
-        })
-        console.log(newMail)
+        console.log('newMail', newMail)
+        setNewMail((prevmail) => ({ ...prevmail, [field]: value }))
+        mailService.save(newMail)
     }
 
     function click(ev, val) {
@@ -43,7 +39,7 @@ export function MailNew() {
         }
     }
 
-    return <form>
+    return <form className="mail-new">
         <label htmlFor="to">To:
             <input
                 type="text"

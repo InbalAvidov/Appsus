@@ -16,8 +16,6 @@ import { NoteEdit } from "./apps/note/cmps/note-edit.jsx"
 export function App() {
 
     const page = window.location.href
-    console.log(page);
-    console.log((page.includes('mail') || page.includes('note') ));
     return <Router>
         <section className="app">
             <AppHeader style={{ display: (page.includes('mail') || page.includes('note') ) ? 'block' : 'none' }}/>

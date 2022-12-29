@@ -5,7 +5,7 @@ const {Link } = ReactRouterDOM
 
 export function MailIndex() {
     return <div>
-        <Link to={'/mail/new'}>New mail</Link>
+        <Link to={'/mail/new'} className ="new">New mail</Link>
         <MailList/>
     </div>
 }
