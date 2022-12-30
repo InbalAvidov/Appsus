@@ -21,13 +21,6 @@ export function MailList() {
         <MailNav filter={filter} setFilter={setFilter} />
         {!isLoading && <table>
             <tbody className="mail-list">
-                <tr>
-                    {/* <span className="star fa-solid fa-star"></span> */}
-                    <th> starred</th>
-                    <th>From</th>
-                    <th>Subject</th>
-                    <th>At</th>
-                </tr>
                 {mails.map(mail => {
                     return <MailPreview mail={mail} loadMails={loadMails} key={mail.id} />
                 })}</tbody>

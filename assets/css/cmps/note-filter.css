@@ -5,22 +5,19 @@ color: grey ;
 
 .note-filter {
     position: absolute;
-    top: 12.5%;
+    top:0;
     left: 0;
-    display: flex;
-    flex-direction: column;
+    display: none;
     height: 100vh;
     background: rgb(255 255 255 / 100%);
     border-inline-start: 1px solid #ccc;
     min-width: 200px;
-    transform: translateX(-100%);
-
     transition: transform .6s, box-shadow .6s;
 }
 
 .note-filter.menu-open{
     display: flex;
-    transform: translateX(0);
+    flex-direction: column;
     box-shadow: -6px 0px 14px rgb(0 0 0 / 20%);
 }
 
@@ -35,13 +32,3 @@ color: grey ;
     padding: 10px 0;
 }
 
-.search-bar {
-    padding-top: 30px;
-    display: inline;
-    width: 70%;
-    margin: 0 auto;
-}
-
-.search-bar input {
-    width: 60%;
-}

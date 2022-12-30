@@ -1,23 +1,37 @@
 .main-mail {
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    position: relative;
 }
 
-td:hover{
+td:hover {
     cursor: pointer;
 }
 
 table {
-    padding-inline-start: 45px;
+    padding: 5px;
+    margin-inline-start: 45px;
     flex-grow: 2;
     background-color: var(--clr6);
+    border-collapse: collapse;
+    border-radius: 30px;
 }
 
 .starred {
     color: gold;
 }
 
-tr.unread {
-    background-color: var(--clr2);
+.mail-row{
+   box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+   font-size: 16px;
+   padding: 10px 0;
+   display: flex;
+   justify-content: space-between;
+}
+.mail-row td{
+    padding: 0;
 }
 
+.mail-row.unread {
+    background-color: var(--clr2);
+}

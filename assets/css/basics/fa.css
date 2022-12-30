@@ -17,12 +17,6 @@
 .fa-solid.fa-inbok::before{
     content: "\f01c";
 }
-.fa-regular.fa-star::before{
-    content: "\f01c";
-}
-.fa-regular.fa-sent::before{
-    content: "\f01c";
-}
 .fa-regular.fa-draft::before{
     content: "\f15b";
 }
@@ -58,4 +52,7 @@
 }
 .fa-solid.fa-copy::before{
     content: "\f0c5";
+}
+.fa-solid.fa-send::before{
+    content: "\f1d8";
 }

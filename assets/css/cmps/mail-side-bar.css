@@ -5,59 +5,30 @@
     padding: 0;
     flex-grow: 1;
     z-index: 1;
-    position:absolute;
+    position: absolute;
+    background-color: var(--clr4);
+    top: -10px;
 }
 
-.side-bar:hover {
-    
-}
+.side-bar li{
+    padding: 10px;
+    display: flex;
+    border-radius: 10px;
 
-.new {
+}
+.side-bar li.new-mail{
     background-color: var(--clr5);
-    padding: 12px;
-    border-radius: 8px;
-    transition: padding .8s;
 }
 
-.new:hover::after {
-    padding: 50px;
-    content: 'New Email';
-    /* width: auto; */
+.content {
+    display: none;
+    margin-left: 10px;
 }
 
-.inbox {
-    padding: 8px;
+.side-bar:hover li {
+   display: flex;
+   width: 200px;
 }
-
-.inbox:hover::after {
-    padding: 50px;
-    content: 'Inbox';
-}
-
-.star-bar {
-    padding: 8px;
-}
-
-.star-bar:hover::after {
-    content: 'Starred';
-    padding: 50px;
-}
-
-.sent {
-    padding: 8px;
-}
-
-.sent:hover::after {
-    content: 'Sent';
-    padding: 50px;
-}
-
-
-.drafts {
-    padding: 8px;;
-}
-
-.drafts:hover::after {
-    content: 'Drafts';
-    padding: 50px;
+.side-bar:hover .content {
+   display: inline-block;
 }
