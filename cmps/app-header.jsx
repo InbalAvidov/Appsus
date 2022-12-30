@@ -11,7 +11,7 @@ export function AppHeader() {
                 <NavLink to="/" ><img className="img-menu home" src="./assets/img/home.png" /></NavLink>
                 <NavLink to="/mail"><img className="img-menu mail" src="./assets/img/mail.png" /></NavLink>
                 <NavLink to="/note"><img className="img-menu note" src="./assets/img/keep.png" /></NavLink>
-                <NavLink to="/about"><img className="img-menu" src="../assets/img/about.png" /></NavLink>
+                <NavLink to="/about"><img className="img-menu" src="./assets/img/about.png" /></NavLink>
             </nav>
             <button>
                 <span className="fa-solid fa-menu menu-btn header"></span>
