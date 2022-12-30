@@ -32,6 +32,9 @@ const criteria = {
 function query(filterBy = getDefaultFilter()) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
+            if (filterBy.status) {
+                mails = mails.filter(mail => !mail.isRead && mail.to === loggedinUser.email)
+            }
             if (filterBy.txt) {
                 const regex = new RegExp(filterBy.txt, 'i')
                 mails = mails.filter(mail => regex.test(mail.subject))
@@ -104,8 +107,8 @@ function getEmptySentMail() {
         id: utilService.makeId(),
         subject: '',
         body: '',
-        isRead: false,
         isStarred: false,
+        isRead: true,
         sentAt: Date.now(),
         to: '',
         from: 'user@appsus.com'
@@ -113,7 +116,7 @@ function getEmptySentMail() {
 }
 
 function getDefaultFilter() {
-    return { txt: '', page: '' }
+    return { txt: '', page: '', status: '' }
 }
 
 

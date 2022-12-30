@@ -2,11 +2,13 @@ import { mailService } from "../services/mail.service.js";
 import { MailNav } from "./mail-nav.jsx";
 import { MailPreview } from "./mail-preview.jsx";
 
-const { useState, useEffect } = React
+const { useState, useEffect, useRef } = React
 export function MailList({ onSetFilter, filter }) {
     const [mails, setMails] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const countUnreadRef = useRef(0)
     useEffect(() => {
+        useRef.current = 0
         setIsLoading(true)
         loadMails()
     }, [filter])
@@ -18,10 +20,12 @@ export function MailList({ onSetFilter, filter }) {
         })
     }
     return <div className="main-mail">
+        <p>Unread mails: {countUnreadRef.current}</p>
         <MailNav onSetFilter={onSetFilter} />
         {!isLoading && <table>
             <tbody className="mail-list">
                 {mails.map(mail => {
+                    if (!mail.isRead) countUnreadRef.current += 1
                     return <MailPreview mail={mail} loadMails={loadMails} key={mail.id} />
                 })}</tbody>
         </table >}
