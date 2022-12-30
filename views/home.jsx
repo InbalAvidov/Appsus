@@ -5,12 +5,18 @@ export function Home() {
             <h1>
                 Welcome To AppSus
             </h1>
-            <p>
-                AppSus is a platform where you can reach your
-                email,notes and visit our book shop.
-                This website was made by Inbal Avidov & Omri Hazan
+            <h3>
+                AppSus is a platform where you can<br></br>
+                reach your email and notes<br></br>
+                This website was made by Inbal Avidov & Omri Hazan<br></br>
                 we hope you'll enjoy this platform!
-            </p>
+            </h3>
+            <div className="home-links">
+            <Link to="/" ><img className="img-home home" src="./assets/img/home.png"/></Link>
+            <Link to="/mail"><img className="img-home mail" src="./assets/img/mail.png"/></Link>
+            <Link to="/note"><img className="img-home note" src="./assets/img/keep.png"/></Link>
+            <Link to="/about"><img className="img-home" src="../assets/img/about.png"/></Link>
+            </div>
         </div>
     </div>
 }

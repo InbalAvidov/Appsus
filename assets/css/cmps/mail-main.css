@@ -4,6 +4,11 @@
     position: relative;
 }
 
+.mail-list {
+    background-color: #ffffff;
+    border-radius: 30px;
+}
+
 td:hover {
     cursor: pointer;
 }
@@ -12,23 +17,25 @@ table {
     padding: 5px;
     margin-inline-start: 45px;
     flex-grow: 2;
-    background-color: var(--clr6);
+    background-color: #ffffff;
     border-collapse: collapse;
-    border-radius: 30px;
+
 }
 
 .starred {
     color: gold;
 }
 
-.mail-row{
-   box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
-   font-size: 16px;
-   padding: 10px 0;
-   display: flex;
-   justify-content: space-between;
+.mail-row {
+    box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+    font-size: 16px;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+
 }
-.mail-row td{
+
+.mail-row td {
     padding: 0;
 }
 
@@ -36,14 +43,35 @@ table {
     background-color: var(--clr2);
 }
 
-.btn-remove{
+.btn-remove {
     opacity: 0;
     transition: .2s;
     padding: 0 15px;
 }
-.btn-remove:hover{
+
+.btn-remove:hover {
     opacity: 1;
 }
-td.star{
+
+td.star {
     padding: 0 10px;
+}
+
+.unread-msg {
+    position: relative;
+    left: 60px;
+    font-size: 2em;
+    margin-top: 10px;
+}
+
+.unread-msg p {
+    position: absolute;
+    top: -7px;
+    left: -7px;
+    font-size: .8rem;
+    background-color: rgb(63, 63, 63);
+    padding: 3px 6px;
+    border-radius: 50%;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
 }

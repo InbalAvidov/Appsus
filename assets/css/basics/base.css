@@ -10,6 +10,7 @@ body {
 
 * {
     box-sizing: border-box;
+    color:rgb(63, 63, 63)
 }
 
 html {
@@ -80,7 +81,7 @@ img {
     width: 60%;
 }
 
-@media (min-width:740px) {
+/* @media (min-width:740px) {
     .main-layout>*:not(.full) {
         margin-left: 50px;
         margin-right: 50px;
@@ -92,4 +93,4 @@ img {
         margin-left: 80px;
         margin-right: 80px;
     }
-}
+} */

@@ -1,0 +1,56 @@
+.about{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.about h1{
+    font-size: 2em;
+    margin: 20px 0;
+}
+
+.about-cards{
+    display: flex;
+    justify-content: space-around;
+}
+
+.dev-card{
+    display: flex;
+    flex-direction: column;
+}
+
+.dev-img{
+    border-radius: 50%;
+}
+
+.dev-info{
+margin-top: 5vh;
+}
+
+.dev-info h3{
+margin-bottom: 7px;
+}
+.dev-info p{
+line-height: 1.2;
+padding-bottom: 20px;
+}
+
+@media (max-width:740px) {
+    .about-cards{
+        flex-direction: column;
+        margin: auto;
+        justify-content: space-around;
+    }
+
+    .dev-card{
+        width: 50vw;
+    }
+    
+}
+@media (min-width:740px) {
+    .dev-card{
+        width: 40vw;
+    }
+   
+}

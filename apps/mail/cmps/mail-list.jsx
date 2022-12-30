@@ -20,7 +20,7 @@ export function MailList({ onSetFilter, filter }) {
         })
     }
     return <div className="main-mail">
-        <p>Unread mails: {countUnreadRef.current}</p>
+        <h2 className="fa-solid fa-envelope unread-msg"><p>{countUnreadRef.current}</p></h2>
         <MailNav onSetFilter={onSetFilter} />
         {!isLoading && <table>
             <tbody className="mail-list">
