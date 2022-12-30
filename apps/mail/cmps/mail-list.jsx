@@ -1,16 +1,16 @@
 import { mailService } from "../services/mail.service.js";
-import { MailNav } from "./mail-filter.jsx";
+import { MailNav } from "./mail-nav.jsx";
 import { MailPreview } from "./mail-preview.jsx";
 
 const { useState, useEffect } = React
-export function MailList() {
+export function MailList({ onSetFilter, filter }) {
     const [mails, setMails] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-    const [filter, setFilter] = useState(mailService.getDefaultFilter())
     useEffect(() => {
         setIsLoading(true)
         loadMails()
     }, [filter])
+
     function loadMails() {
         mailService.query(filter).then((filterdMails) => {
             setMails(filterdMails)
@@ -18,7 +18,7 @@ export function MailList() {
         })
     }
     return <div className="main-mail">
-        <MailNav filter={filter} setFilter={setFilter} />
+        <MailNav onSetFilter={onSetFilter} />
         {!isLoading && <table>
             <tbody className="mail-list">
                 {mails.map(mail => {

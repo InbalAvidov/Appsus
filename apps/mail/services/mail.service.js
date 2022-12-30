@@ -32,29 +32,24 @@ const criteria = {
 function query(filterBy = getDefaultFilter()) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            console.log(mails)
             if (filterBy.txt) {
                 const regex = new RegExp(filterBy.txt, 'i')
                 mails = mails.filter(mail => regex.test(mail.subject))
             }
             switch (filterBy.page) {
                 case 'starred':
-                    console.log('starred')
                     mails = mails.filter(mail => mail.isStarred)
                     break;
 
                 case 'sent':
-                    console.log('sent')
                     mails = mails.filter(mail => mail.from === loggedinUser.email && mail.sentAt)
                     break;
 
                 case 'drafts':
-                    console.log('darfs')
                     mails = mails.filter(mail => !mail.sentAt)
                     break;
 
                 default:
-                    console.log('inbox')
                     mails = mails.filter(mail => mail.to === loggedinUser.email && !mail.isStarred)
                     break;
             }
@@ -118,7 +113,7 @@ function getEmptySentMail() {
 }
 
 function getDefaultFilter() {
-    return { txt: '', page: 'inbox' }
+    return { txt: '', page: '' }
 }
 
 
