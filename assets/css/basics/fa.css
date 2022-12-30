@@ -62,3 +62,6 @@
 .fa-solid.fa-user::before{
     content: "\f007";
 }
+.fa-solid.fa-filter::before{
+    content: "\f0b0";
+}

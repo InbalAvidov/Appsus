@@ -14,3 +14,7 @@
     font-family: roboto;
     src: url(../../fonts/Roboto-Light.ttf);
 }
+@font-face {
+    font-family: ubuntu;
+    src: url(../../fonts/Ubuntu-Regular.ttf);
+}

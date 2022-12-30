@@ -21,6 +21,7 @@ export function NotePreview({ note, loadNotes }) {
     }
 
     function onChangeColor(ev) {
+        ev.stopPropagation()
         NoteService.setNoteColor(note, ev.target.value)
             .then(() => loadNotes()
             )
@@ -32,7 +33,8 @@ export function NotePreview({ note, loadNotes }) {
         })
     }
 
-    function onPalette() {
+    function onPalette(ev) {
+        ev.stopPropagation()
         setIsPalette(!isPalette)
     }
 
@@ -66,7 +68,7 @@ export function NotePreview({ note, loadNotes }) {
             <button title="Duplicate" onClick={onDuplicateNote}><span className="fa-solid fa-copy"></span></button>
             <button title="Change color" onClick={onPalette}><span className="fa-solid fa-palette" ></span></button>
             <button title="Edit" onClick={onEditNote}><span className={isEdit ? "" : "fa-solid fa-edit"} ></span></button>
-            {isPalette && <input type="color" value={note.color} onChange={(event) => onChangeColor(event)} />}
+            {isPalette && <input className="palette" type="color" value={note.color} onChange={(event) => onChangeColor(event)} />}
         </div>
     </div >
 
