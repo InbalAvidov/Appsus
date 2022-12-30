@@ -10,7 +10,6 @@ export function MailPreview({ mail, loadMails }) {
         target.classList.toggle('starred')
         return mailService.setIsStarred(mail)
             .then(() => {
-                console.log(mailService.get(mail.id))
                 loadMails()
             })
     }
