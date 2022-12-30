@@ -3,6 +3,7 @@ import { utilService } from "../../../services/util.service.js"
 
 const NOTE_KEY = 'noteDB'
 _createnotes()
+var filter
 
 export const NoteService = {
     query,
@@ -52,7 +53,7 @@ function save(note) {
 }
 
 function getDefaultFilter() {
-    return { txt: '', type: '' ,pin:false}
+   return { txt: '', type: '', pin: false }
 }
 
 function _createnotes() {
@@ -68,8 +69,8 @@ function _createnotes() {
                 },
                 isPinned: false,
                 isEdit: false,
-                content:"Fullstack Me Baby!",
-                color:"#e8eaed"
+                content: "Fullstack Me Baby!",
+                color: "#e8eaed"
             },
             {
                 id: "n102",
@@ -83,8 +84,8 @@ function _createnotes() {
                 },
                 isPinned: false,
                 isEdit: false,
-                content:"assets/img/puppy.jpg",
-                color:"#e8eaed"
+                content: "assets/img/puppy.jpg",
+                color: "#e8eaed"
             },
             {
                 id: "n103",
@@ -98,22 +99,22 @@ function _createnotes() {
                 },
                 isPinned: false,
                 isEdit: false,
-                content:"Get my stuff together,Driving liscence,Coding power",
-                color:"#e8eaed"
+                content: "Get my stuff together,Driving liscence,Coding power",
+                color: "#e8eaed"
             }
         ]
         utilService.saveToStorage(NOTE_KEY, notes)
     }
 }
 
-function addNote(content, noteType ,isPinned) {
-    if (noteType === 'note-txt') return _addTxtNote(content , isPinned)
-    else if (noteType === 'note-img') return _addImgNote(content , isPinned)
-    else if (noteType === 'note-video') return _addVideoNote(content , isPinned)
-    if (noteType === 'note-todos') return _addTodosNote(content , isPinned)
+function addNote(content, noteType, isPinned) {
+    if (noteType === 'note-txt') return _addTxtNote(content, isPinned)
+    else if (noteType === 'note-img') return _addImgNote(content, isPinned)
+    else if (noteType === 'note-video') return _addVideoNote(content, isPinned)
+    if (noteType === 'note-todos') return _addTodosNote(content, isPinned)
 }
 
-function _addTxtNote(txt,isPinned) {
+function _addTxtNote(txt, isPinned) {
     const newNote = {
         id: '',
         type: "note-txt",
@@ -123,13 +124,13 @@ function _addTxtNote(txt,isPinned) {
         },
         isPinned,
         isEdit: false,
-        content:txt,
-        color:"#e8eaed"
+        content: txt,
+        color: "#e8eaed"
     }
     return save(newNote)
 }
 
-function _addTodosNote(text,isPinned) {
+function _addTodosNote(text, isPinned) {
     const todosText = text.split(',')
     const label = todosText.splice(0, 1)
     const todos = todosText.map((todo, idx) => ({ txt: todo, doneAt: null }))
@@ -142,14 +143,14 @@ function _addTodosNote(text,isPinned) {
         },
         isPinned,
         isEdit: false,
-        content:todosText.join(''),
-        color:"#e8eaed"
+        content: todosText.join(''),
+        color: "#e8eaed"
 
     }
     return save(newNote)
 
 }
-function _addImgNote(src,isPinned) {
+function _addImgNote(src, isPinned) {
     const newNote = {
         id: '',
         type: "note-img",
@@ -162,16 +163,16 @@ function _addImgNote(src,isPinned) {
         },
         isPinned,
         isEdit: false,
-        content:src,
-        color:"#e8eaed"
+        content: src,
+        color: "#e8eaed"
 
     }
     return save(newNote)
 }
 
-function _addVideoNote(content,isPinned) {
+function _addVideoNote(content, isPinned) {
     const contentArr = content.split('/')
-    const videoId = contentArr[contentArr-1]
+    const videoId = contentArr[contentArr - 1]
     const newNote = {
         id: '',
         type: "note-video",
@@ -180,8 +181,8 @@ function _addVideoNote(content,isPinned) {
         content,
         isPinned: false,
         isEdit: false,
-        content:contentArr.join(''),
-        color:"#e8eaed"
+        content: contentArr.join(''),
+        color: "#e8eaed"
 
     }
     return save(newNote)
@@ -191,21 +192,20 @@ function pinNote(note) {
     note.isPinned = !note.isPinned
     return save(note)
 }
-function setNoteColor(note , color){
+function setNoteColor(note, color) {
     note.color = color
     return save(note)
 }
 
 
-function getNoteContent(note){
+function getNoteContent(note) {
     if (note.type === 'note-txt') return note.info.txt
     else if (note.type === 'note-img') return note.info.url
     else if (note.type === 'note-video') return note.content
-    if (note.type === 'note-todos'){
+    if (note.type === 'note-todos') {
         const todos = [...note.info.todos]
         const todosText = todos.map(todo => todo.txt)
-        return [note.info.label,...todosText].join(',')
+        return [note.info.label, ...todosText].join(',')
     }
 }
-
 

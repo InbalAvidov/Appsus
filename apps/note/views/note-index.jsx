@@ -1,5 +1,4 @@
 const { useState, useEffect } = React
-const { Link } = ReactRouterDOM
 
 
 import { NoteAdd } from "../cmps/note-add.jsx"
@@ -25,17 +24,16 @@ export function NoteIndex() {
             })
     }
 
-
     return <main className="main-notes main-layout full">
         <div className="notes-container">
 
-        <NoteFilter setFilterBy={setFilterBy}/>
-        <div className="note-section">
-            <NoteAdd loadNotes={loadNotes} />
+        <NoteFilter setFilterBy={setFilterBy} />
+            <div className="note-section">
+                <NoteAdd loadNotes={loadNotes} />
 
-            {notes && <NoteList notes={notes} loadNotes={loadNotes} />}
-            {notes.length === 0 && <h2>No results...</h2>}
-        </div>
+                {notes && <NoteList notes={notes} loadNotes={loadNotes} />}
+                {!notes.length || !notes && <h2>No results...</h2>}
+            </div>
         </div>
     </main>
 

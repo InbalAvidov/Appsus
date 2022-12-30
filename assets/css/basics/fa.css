@@ -26,7 +26,7 @@
 .fa-regular.fa-draft::before{
     content: "\f15b";
 }
-.fa-regular.fa-bars::before{
+.fa-solid.fa-menu::before{
     content: "\f0c9";
 }
 .fa-solid.fa-search::before{
