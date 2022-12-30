@@ -1,3 +1,4 @@
+import { showSuccessMsg } from "../../../services/event-bus.service.js"
 import { mailService } from "../services/mail.service.js"
 
 const { Link, useNavigate } = ReactRouterDOM
@@ -15,6 +16,8 @@ export function MailPreview({ mail, loadMails }) {
     }
     function onRemove(mailId) {
         mailService.remove(mailId).then(loadMails)
+        showSuccessMsg('Mail was deleted successfully')
+
     }
     function onMailClicked() {
         mailService.setIsRead(mail)
@@ -31,7 +34,7 @@ export function MailPreview({ mail, loadMails }) {
         <td onClick={onMailClicked}>{mail.from}</td>
         <td onClick={onMailClicked}>{mail.subject}</td>
         <td onClick={onMailClicked}>{new Date(mail.sentAt).toDateString()}</td>
-        <td><button onClick={() => onRemove(mail.id)}>Remove</button></td>
+        <td><button onClick={() => onRemove(mail.id)}><span className="fa-solid fa-trash btn-remove"></span></button></td>
     </tr>
 }
 

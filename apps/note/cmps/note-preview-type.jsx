@@ -10,6 +10,7 @@ export function NotePreviewByType({ note}) {
         case 'note-img':
             return <div className="note-content">
                 <img className="note-img" src={note.info.url} />
+                <h4>{note.info.title}</h4>
             </div>
         case 'note-todos':
             return <div className="note-content">

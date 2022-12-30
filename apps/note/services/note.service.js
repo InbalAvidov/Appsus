@@ -77,7 +77,7 @@ function _createnotes() {
                 type: "note-img",
                 info: {
                     url: "assets/img/puppy.jpg",
-                    title: "Image"
+                    title: "Bobi and I"
                 },
                 style: {
                     backgroundColor: "#00d"

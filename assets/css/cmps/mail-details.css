@@ -1,0 +1,45 @@
+.mail-details{
+    display: flex;
+    flex-direction: column;
+    border-collapse: collapse;
+    height: 80vh;
+}
+
+.mail-details >*{
+    width: 100%;
+    border: .5px solid rgb(214, 213, 213);
+    border-top: 0;
+    padding: 10px ;
+}
+
+.mail-address .user{
+    background-color: lightgray;
+    padding: 5px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.mail-subject{
+    font-weight: 600;
+}
+.mail-body{
+    flex: 1;
+}
+
+/* mail-address
+mail-btn-back
+mail-btn-response   */
+
+.link-btn{
+    display: flex;
+    justify-content: space-between;
+    border: none;
+}
+
+.link-btn >*{
+    background-color: rgb(63, 63, 63);
+    color: rgb(198, 198, 198);
+    border-radius: 5px;
+    padding: 7px 30px;
+    font-weight: 500;
+}

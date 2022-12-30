@@ -30,18 +30,17 @@ export function NoteFilter({ setFilterBy }) {
         setMenuOpen(!menuOpen)
     }
     return <div className="menu">
-        <button onClick={toggleMenu}><span className="fa-solid fa-menu menu-btn"></span></button>
-        <form className={menuOpen ? "menu-open note-filter" : "note-filter"}>
-            <button onClick={toggleMenu} className={"close-menu"}>X</button>
+        <button><span className="fa-solid fa-menu menu-btn"></span></button>
+        <form className="note-filter">
             <div className="search-bar">
                 <input name="content" placeholder="search..." value={filterByToEdit.txt} onChange={handleChange} />
                 <button onSubmit={onSubmitFilter}><span className="fa-solid fa-search"></span></button>
             </div>
-            <label htmlFor="pin">Pin
+            <label htmlFor="pin"><span className="fa-solid fa-pin"></span>
                 <input style={{ accentColor: 'black' }} name="pin" id="pin" type="checkbox" onChange={handleChange} />
             </label>
-            <label htmlFor="type">Type
-                <select name="type" id="type" onChange={handleChange}>
+            <label htmlFor="type" className="label-type">Type
+                <select className="select-type" name="type" id="type" onChange={handleChange}>
                     <option name="type" value="">All</option>
                     <option name="type" value="note-txt">Text</option>
                     <option name="type" value="note-todos">List</option>

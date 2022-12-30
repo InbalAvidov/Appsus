@@ -1,11 +1,14 @@
 .fa-solid{
     font-family: fa-solid ;
+    color: rgb(56, 56, 56);
 }
 .fa-brands{
     font-family: fa-brands ;
 }
 .fa-regular{
     font-family: fa-regular ;
+    color: rgb(56, 56, 56);
+
 }
 
 .fa-solid.fa-trash::before{
@@ -55,4 +58,7 @@
 }
 .fa-solid.fa-send::before{
     content: "\f1d8";
+}
+.fa-solid.fa-user::before{
+    content: "\f007";
 }

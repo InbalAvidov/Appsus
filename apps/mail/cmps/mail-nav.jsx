@@ -18,8 +18,9 @@ export function MailNav({ onSetFilter }) {
     return <div className="main-filter">
         <ul className="side-bar">
             <li className="new-mail">
-                <Link to={'/mail/new'} className="new"><span className="fa-solid fa-edit"></span></Link>
+                <Link to={'/mail/new'} className="new"><span className="fa-solid fa-edit"></span>
                 <span className="content">New Mail</span>
+                </Link>
             </li>
             <li onClick={() => handleChange('inbox')}
                 className="inbox">
