@@ -15,7 +15,7 @@ export function Home() {
             <Link to="/" ><img className="img-home home" src="./assets/img/home.png"/></Link>
             <Link to="/mail"><img className="img-home mail" src="./assets/img/mail.png"/></Link>
             <Link to="/note"><img className="img-home note" src="./assets/img/keep.png"/></Link>
-            <Link to="/about"><img className="img-home" src="../assets/img/about.png"/></Link>
+            <Link to="/about"><img className="img-home" src="./assets/img/about.png"/></Link>
             </div>
         </div>
     </div>
