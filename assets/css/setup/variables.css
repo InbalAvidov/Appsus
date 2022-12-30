@@ -5,12 +5,14 @@
     /* bgc */
     --clr-bg:#f6f8fc;
     /* background-color for unread msg */
-    --clr2: #f2f6fc;
+    --clr2: #ffff;
     /* txt color */
     --clr3-txt: #202124;
-    /* side bar background-color */
+    /* page bar background-color */
     --clr4: #f6f8fc;
     --clr5 : #c2e7ff;
+    --clr6: #f2f6fc
+
     --clr-notebg: #e8eaed;
     --clr-active:  #bababa;
 

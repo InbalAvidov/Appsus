@@ -17,8 +17,8 @@ export function MailNav({ filter, setFilter }) {
             className="inbox">
             <span className="fa-solid fa-envelope"></span>
         </li>
-        <li onClick={() => handleChange('marked')}
-            className="marked">
+        <li onClick={() => handleChange('starred')}
+            className="star-bar">
             <span className="fa-solid fa-star"></span>
         </li>
         <li onClick={() => handleChange('sent')}

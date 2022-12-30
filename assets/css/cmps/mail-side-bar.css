@@ -5,6 +5,7 @@
     padding: 0;
     flex-grow: 1;
     z-index: 1;
+    position:absolute;
 }
 
 .side-bar:hover {
@@ -33,11 +34,11 @@
     content: 'Inbox';
 }
 
-.marked {
+.star-bar {
     padding: 8px;
 }
 
-.marked:hover::after {
+.star-bar:hover::after {
     content: 'Starred';
     padding: 50px;
 }

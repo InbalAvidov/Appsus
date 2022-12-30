@@ -10,7 +10,9 @@ export const mailService = {
     save,
     getDefaultFilter,
     getEmptyMail,
-    debounce
+    debounce,
+    setIsStarred,
+    setIsRead
 }
 
 
@@ -36,9 +38,9 @@ function query(filterBy = getDefaultFilter()) {
                 mails = mails.filter(mail => regex.test(mail.subject))
             }
             switch (filterBy.page) {
-                case 'marked':
-                    console.log('marked')
-                    mails = mails.filter(mail => mail.marked)
+                case 'starred':
+                    console.log('starred')
+                    mails = mails.filter(mail => mail.isStarred)
                     break;
 
                 case 'sent':
@@ -53,7 +55,7 @@ function query(filterBy = getDefaultFilter()) {
 
                 default:
                     console.log('inbox')
-                    mails = mails.filter(mail => mail.to === loggedinUser.email)
+                    mails = mails.filter(mail => mail.to === loggedinUser.email && !mail.isStarred)
                     break;
             }
             return mails
@@ -119,6 +121,15 @@ function getDefaultFilter() {
     return { txt: '', page: 'inbox' }
 }
 
+
+function setIsStarred(mail) {
+    mail.isStarred = !mail.isStarred
+    return save(mail)
+}
+function setIsRead(mail) {
+    mail.isRead = true
+    return save(mail)
+}
 
 function _createMailList() {
     let mails = utilService.loadFromStorage(MAIL_KEY)

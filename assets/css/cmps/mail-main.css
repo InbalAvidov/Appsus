@@ -1,14 +1,23 @@
-
-.main-mail{
+.main-mail {
     display: flex;
     width: 100%;
 }
 
-tr:nth-child(odd){
-    background-color: grey;
+td:hover{
+    cursor: pointer;
 }
 
-table{
-    display: flex;
+table {
+    padding-inline-start: 45px;
     flex-grow: 2;
+    background-color: var(--clr6);
 }
+
+.starred {
+    color: gold;
+}
+
+tr.unread {
+    background-color: var(--clr2);
+}
+

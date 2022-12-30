@@ -1,18 +1,38 @@
 import { mailService } from "../services/mail.service.js"
 
-const { Link } = ReactRouterDOM
+const { Link, useNavigate } = ReactRouterDOM
 
-export function MailPreview({ mail }) {
+export function MailPreview({ mail, loadMails }) {
+    const navigate = useNavigate()
+    let classStarred = mail.isStarred ? 'starred' : ''
+    let classRead = mail.isRead ? '' : 'unread'
+    function toggleStarred({ target }) {
+        target.classList.toggle('starred')
+        return mailService.setIsStarred(mail)
+            .then(() => {
+                console.log(mailService.get(mail.id))
+                loadMails()
+            })
+    }
     function onRemove(mailId) {
         mailService.remove(mailId).then(loadMails)
     }
-    return <tr key={mail.id} className="mail-row">
-        <td>{mail.from}</td>
-        <td>{mail.subject}</td>
-        <td>{new Date(mail.sentAt).toDateString()}</td>
-        {mail.sentAt && <td><Link to={`/mail/${mail.id}`}>See more...</Link></td>}
-        {!mail.sentAt && <td><Link to={`/mail/new/${mail.id}`}>Edit</Link></td>}
-        <td><button onClick={() => onRemove(mail.id)}>remove</button></td>
+    function onMailClicked() {
+        mailService.setIsRead(mail)
+            .then(() => {
+                if (mail.sentAt) {
+                    navigate(`/mail/${mail.id}`)
+                } else {
+                    navigate(`/mail/new/${mail.id}`)
+                }
+            })
+    }
+    return <tr key={mail.id} className={classRead + " mail-row"}>
+        <td className={`star fa-solid fa-star ${classStarred}`} onClick={toggleStarred}></td>
+        <td onClick={onMailClicked}>{mail.from}</td>
+        <td onClick={onMailClicked}>{mail.subject}</td>
+        <td onClick={onMailClicked}>{new Date(mail.sentAt).toDateString()}</td>
+        <td><button onClick={() => onRemove(mail.id)}>Remove</button></td>
     </tr>
 }
 
