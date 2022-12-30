@@ -19,7 +19,7 @@ export function MailSearch({ onSetFilter }) {
                 type="text"
                 name="search"
                 id="search"
-                placeholder="Search mail here..."
+                placeholder="Search"
                 value={filter.txt}
                 onChange={handleChange}
             />

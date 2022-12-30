@@ -1,3 +1,4 @@
+import { showSuccessMsg } from "../../../services/event-bus.service.js"
 import { mailService } from "../services/mail.service.js"
 
 const { useParams, useNavigate, Link } = ReactRouterDOM
@@ -28,22 +29,26 @@ export function MailNew() {
 
     function click(ev, val) {
         ev.preventDefault()
-        if (val === 'send') newMail.sentAt = Date.now()
+        if (val === 'send'){
+            newMail.sentAt = Date.now()
+            showSuccessMsg('Mail was sent successfully')
+        } 
+        if (val === 'back') showSuccessMsg('Mail was saved to drafts')
         mailService.save(newMail)
         nevigate(-1)
     }
 
     return <form className="mail-new">
-        <label htmlFor="to">To:
+        <label htmlFor="to" className="new-mail-to">To :
             <input
                 type="text"
                 name="to"
-                placeholder="Enter mail"
+                placeholder="Enter email"
                 value={newMail.to}
                 onChange={handleChange}
             />
         </label>
-        <label htmlFor="subject">Subject:
+        <label htmlFor="subject" className="new-mail-subject">Subject :
             <input
                 type="text"
                 name="subject"
@@ -52,16 +57,18 @@ export function MailNew() {
                 onChange={handleChange}
             />
         </label>
-        <label htmlFor="body">Body:
+        <label htmlFor="body" className="new-mail-body">Body :
             <input
                 type="text"
                 name="body"
-                placeholder="Enter youe messege"
+                placeholder="Enter your messege"
                 value={newMail.body}
                 onChange={handleChange}
             />
         </label>
+        <div className="link-btn">
         <button onClick={(ev) => { click(ev, 'send') }}>Send</button>
         <button onClick={(ev) => { click(ev, 'back') }}>Back</button>
+        </div>
     </form>
 }

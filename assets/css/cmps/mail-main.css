@@ -35,3 +35,15 @@ table {
 .mail-row.unread {
     background-color: var(--clr2);
 }
+
+.btn-remove{
+    opacity: 0;
+    transition: .2s;
+    padding: 0 15px;
+}
+.btn-remove:hover{
+    opacity: 1;
+}
+td.star{
+    padding: 0 10px;
+}

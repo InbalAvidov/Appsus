@@ -30,5 +30,7 @@
 @import './cmps/mail-main.css';
 @import './cmps/mail-side-bar.css';
 @import './cmps/mail-search.css';
+@import './cmps/mail-details.css';
+@import './cmps/mail-new.css';
 
 /* @import './apps/mail/cmps/mail-list.css'; */

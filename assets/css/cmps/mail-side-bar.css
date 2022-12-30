@@ -8,15 +8,27 @@
     position: absolute;
     background-color: var(--clr4);
     top: -10px;
+    height: 80vh;
 }
 
-.side-bar li{
+.side-bar:hover {
+    box-shadow: -6px 0px 14px rgb(0 0 0 / 10%);
+}
+
+.side-bar li {
     padding: 10px;
     display: flex;
+    cursor: pointer;
     border-radius: 10px;
 
 }
-.side-bar li.new-mail{
+
+.side-bar li:hover {
+    background-color: var(--clr-active);
+
+}
+
+.side-bar li.new-mail {
     background-color: var(--clr5);
 }
 
@@ -26,9 +38,10 @@
 }
 
 .side-bar:hover li {
-   display: flex;
-   width: 200px;
+    display: flex;
+    width: 200px;
 }
+
 .side-bar:hover .content {
-   display: inline-block;
+    display: inline-block;
 }
