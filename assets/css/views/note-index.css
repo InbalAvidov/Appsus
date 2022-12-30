@@ -1,6 +1,7 @@
 .main-notes {
     text-align: center;
     background-color: var(--clr-bg);
+    position: relative;
 }
 
 .notes-container {

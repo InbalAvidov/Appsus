@@ -6,13 +6,12 @@ color: grey ;
 .note-filter {
     position: absolute;
     top:0;
-    left: 0;
     display: none;
     height: 100vh;
     background: rgb(255 255 255 / 100%);
-    border-inline-start: 1px solid #ccc;
+    border-right: 1px solid rgb(216, 216, 216);
     min-width: 200px;
-    transition: transform .6s, box-shadow .6s;
+    transition: box-shadow .6s;
 }
 
 .note-filter.menu-open{

@@ -21,12 +21,12 @@ export function MailDetails() {
     }
 
     if (!mail) return <div>Loading...</div>
-    return <div>
-        <p>{mail.subject}</p>
-        <p>{mail.from}</p>
-        <p>{mail.body}</p>
-        <p>{new Date(mail.sentAt).toDateString()}</p>
-        <Link to='/mail'>Back</Link>
-        <Link to={`/mail/new/${mail.id}`}>Response</Link>
+    return <div className="mail-details">
+        <p className="mail-subject">{mail.subject}</p>
+        <p className="mail-address">{mail.from}</p>
+        <p className="mail-body">{mail.body}</p>
+        <p className="mail-sent-at">{new Date(mail.sentAt).toDateString()}</p>
+        <Link className="mail-btn-back" to='/mail'>Back</Link>
+        <Link className="mail-btn-response" to={`/mail/new/${mail.id}`}>Response</Link>
     </div>
 }
