@@ -8,13 +8,21 @@ export function MailList({ onSetFilter, filter }) {
     const [isLoading, setIsLoading] = useState(false)
     const countUnreadRef = useRef(0)
     useEffect(() => {
-        useRef.current = 0
         setIsLoading(true)
         loadMails()
     }, [filter])
 
     function loadMails() {
         mailService.query(filter).then((filterdMails) => {
+            countUnreadRef.current = 0
+            console.log(mails)
+            filterdMails.forEach(mail => {
+                console.log('mail.isRead', mail.isRead, mail.id)
+                if (!mail.isRead) {
+                    countUnreadRef.current += 1
+                    console.log(countUnreadRef.current)
+                }
+            });
             setMails(filterdMails)
             setIsLoading(false)
         })
@@ -25,7 +33,6 @@ export function MailList({ onSetFilter, filter }) {
         {!isLoading && <table>
             <tbody className="mail-list">
                 {mails.map(mail => {
-                    if (!mail.isRead) countUnreadRef.current += 1
                     return <MailPreview mail={mail} loadMails={loadMails} key={mail.id} />
                 })}</tbody>
         </table >}

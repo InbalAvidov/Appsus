@@ -12,7 +12,7 @@ export const mailService = {
     getEmptyMail,
     debounce,
     setIsStarred,
-    setIsRead
+    setIsRead,
 }
 
 
@@ -28,6 +28,7 @@ const criteria = {
     isStared: true, // (optional property, if missing: show all)
     lables: ['important', 'romantic'] // has any of the labels
 }
+
 
 function query(filterBy = getDefaultFilter()) {
     return storageService.query(MAIL_KEY)
@@ -94,7 +95,7 @@ function getEmptyMail() {
         id: '',
         subject: '',
         body: '',
-        isRead: false,
+        isRead: true,
         isStarred: false,
         sentAt: '',
         to: '',
