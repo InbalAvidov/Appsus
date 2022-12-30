@@ -81,16 +81,9 @@ img {
     width: 60%;
 }
 
-/* @media (min-width:740px) {
-    .main-layout>*:not(.full) {
-        margin-left: 50px;
-        margin-right: 50px;
+@media (max-width:740px) {
+    html{
+        font-size: 16px;
     }
 }
 
-@media (min-width:980px) {
-    .main-layout>*:not(.full) {
-        margin-left: 80px;
-        margin-right: 80px;
-    }
-} */

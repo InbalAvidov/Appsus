@@ -30,7 +30,7 @@ export function NoteFilter({ setFilterBy }) {
         setMenuOpen(!menuOpen)
     }
     return <div className="menu">
-        <button><span className="fa-solid fa-menu menu-btn"></span></button>
+        <button><span className="fa-solid fa-filter menu-btn"></span></button>
         <form className="note-filter">
             <div className="search-bar">
                 <input name="content" placeholder="search..." value={filterByToEdit.txt} onChange={handleChange} />

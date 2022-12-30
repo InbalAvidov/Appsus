@@ -11,7 +11,7 @@
 
 .note-preview .note-btns {
    visibility: hidden;
-   padding: 1em 0 .5em;
+   padding: 2em 0 .5em;
 }
 
 .note-preview .note-btns.selected {
@@ -30,6 +30,12 @@
 button.pin {
    color: rgb(247, 214, 0);
 }
+
+.palette{
+   border: 2px solid rgb(55, 55, 55);
+}
+
+
 
 @media (max-width:740px) {
    .note-preview {
