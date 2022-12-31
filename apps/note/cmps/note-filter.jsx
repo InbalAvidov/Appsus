@@ -29,17 +29,15 @@ export function NoteFilter({ setFilterBy }) {
         ev.preventDefault()
         setMenuOpen(!menuOpen)
     }
-    return <div className="menu">
-        <button><span className="fa-solid fa-filter menu-btn"></span></button>
-        <form className="note-filter">
+    return <div className="note-filter">
+            <label htmlFor="pin"><span className="fa-solid fa-pin"></span>
+                <input style={{ accentColor: 'black' }} name="pin" id="pin" type="checkbox" onChange={handleChange} />
+            </label>
             <div className="search-bar">
                 <input name="content" placeholder="search..." value={filterByToEdit.txt} onChange={handleChange} />
                 <button onSubmit={onSubmitFilter}><span className="fa-solid fa-search"></span></button>
             </div>
-            <label htmlFor="pin"><span className="fa-solid fa-pin"></span>
-                <input style={{ accentColor: 'black' }} name="pin" id="pin" type="checkbox" onChange={handleChange} />
-            </label>
-            <label htmlFor="type" className="label-type">Type
+            <label htmlFor="type" className="label-type">
                 <select className="select-type" name="type" id="type" onChange={handleChange}>
                     <option name="type" value="">All</option>
                     <option name="type" value="note-txt">Text</option>
@@ -48,6 +46,5 @@ export function NoteFilter({ setFilterBy }) {
                     <option name="type" value="note-video">video</option>
                 </select>
             </label>
-        </form>
     </div>
 }
