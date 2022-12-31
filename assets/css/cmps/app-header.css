@@ -48,6 +48,7 @@ nav {
     box-shadow: -6px 0px 14px rgb(0 0 0 / 20%);
     padding: 1rem;
     transition: .3s all ease-in-out;
+    pointer-events: none;
 }
 
 nav a {
@@ -60,9 +61,11 @@ nav a {
 }
 
 .main-menu:hover nav {
+    pointer-events: all;
     opacity: 1;
     transform: translateY(0);
 }
+
 
 nav img.img-menu {
     height: 40px;

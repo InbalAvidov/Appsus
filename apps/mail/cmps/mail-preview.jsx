@@ -30,11 +30,11 @@ export function MailPreview({ mail, loadMails }) {
             })
     }
     return <tr key={mail.id} className={classRead + " mail-row"}>
-        <td className={`star fa-solid fa-star ${classStarred}`} onClick={toggleStarred}></td>
         <td onClick={onMailClicked}>{mail.from}</td>
         <td onClick={onMailClicked}>{mail.subject}</td>
         <td onClick={onMailClicked}>{new Date(mail.sentAt).toDateString()}</td>
-        <td><button onClick={() => onRemove(mail.id)}><span className="fa-solid fa-trash btn-remove"></span></button></td>
+        <td><button onClick={toggleStarred}><span className={`star fa-solid fa-star ${classStarred}`} ></span></button>
+            <button onClick={() => onRemove(mail.id)}><span className="fa-solid fa-trash btn-remove"></span></button></td>
     </tr>
 }
 

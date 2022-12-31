@@ -33,14 +33,18 @@ table {
 .mail-row {
     box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
     font-size: 16px;
-    padding: 10px 0;
     display: flex;
-    justify-content: space-between;
-
+    height: 42px;
+    align-items: center;
 }
 
 .mail-row td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 1;
     padding: 0;
+    width: fit-content;
 }
 
 .mail-row.unread {
@@ -48,16 +52,24 @@ table {
 }
 
 .btn-remove {
-    opacity: 0;
-    transition: .2s;
     padding: 0 15px;
 }
 
-.btn-remove:hover {
-    opacity: 1;
-}
-
 td.star {
-    padding: 0 10px;
+    padding: 0;
+    flex: 0;
 }
 
+@media (max-width:740px) {
+    span.star {
+        font-size: 12px;
+        padding: 3px;
+    }
+    .btn-remove {
+        font-size: 12px;
+        padding: 3px;
+    }
+    .mail-row td {
+        padding-right: 2px;
+    }
+ }

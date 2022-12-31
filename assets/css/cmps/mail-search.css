@@ -1,11 +1,11 @@
-.mail-header{
+.mail-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .search-bar.mail {
-    margin: 0;
+    margin: 5px 0;
     margin-inline-end: 10px;
     width: 100%;
     border-radius: 15px;
@@ -41,34 +41,27 @@
     border: 2px solid whitesmoke;
 }
 
-.toggle-filter,.search-filters select {
+.toggle-filter,
+.search-filters select {
     outline: none;
     border: unset;
-    min-width:70px;
+    min-width: 70px;
     background-color: #eaf1fb;
     border-radius: 10px;
     font-weight: bold;
     padding: 6px 12px;
 }
 
-.search-filters{
+.search-filters {
+    margin-left: 11px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 280px;
 }
-/* .search-filters select{
-    outline: none;
-    border: 1px solid #e1dfdf;
-    border-radius: 2rem;
-    padding: 6px 12px;
-} */
 
 @media (max-width:740px) {
     .toggle-filter {
         font-size: 16px;
-    } 
- }
- 
- 
- 
+    }
+}
