@@ -41,19 +41,28 @@
     border: 2px solid whitesmoke;
 }
 
-.toggle-filter {
-    width: 75px;
-    height: 20px;
+.toggle-filter,.search-filters select {
+    outline: none;
+    border: unset;
+    min-width:70px;
     background-color: #eaf1fb;
     border-radius: 10px;
     font-weight: bold;
+    padding: 6px 12px;
 }
 
 .search-filters{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 280px;
 }
+/* .search-filters select{
+    outline: none;
+    border: 1px solid #e1dfdf;
+    border-radius: 2rem;
+    padding: 6px 12px;
+} */
 
 @media (max-width:740px) {
     .toggle-filter {
