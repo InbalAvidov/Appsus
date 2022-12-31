@@ -1,5 +1,5 @@
-const { Link, Outlet } = ReactRouterDOM
-const { useRef, useState, useEffect } = React
+const { Link } = ReactRouterDOM
+const {  useState } = React
 
 import { NoteService } from "../services/note.service.js"
 import { NotePreviewByType } from "./note-preview-type.jsx"
@@ -68,6 +68,7 @@ export function NotePreview({ note, loadNotes }) {
             <button title="Duplicate" onClick={onDuplicateNote}><span className="fa-solid fa-copy"></span></button>
             <button title="Change color" onClick={onPalette}><span className="fa-solid fa-palette" ></span></button>
             <button title="Edit" onClick={onEditNote}><span className={isEdit ? "" : "fa-solid fa-edit"} ></span></button>
+            <Link title="Send as mail" to={`/mail/new/${note.id}`}><span className="fa-solid fa-envelope"></span></Link>
             {isPalette && <input className="palette" type="color" value={note.color} onChange={(event) => onChangeColor(event)} />}
         </div>
     </div >
