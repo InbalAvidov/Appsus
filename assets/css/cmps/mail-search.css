@@ -6,7 +6,9 @@
 
 .search-bar.mail {
     margin: 0;
-    width: 60%;
+    margin-inline-end: 10px;
+    width: 100%;
+    border-radius: 15px;
     display: flex;
     justify-content: space-between;
 }

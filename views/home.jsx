@@ -6,16 +6,19 @@ export function Home() {
                 Welcome To AppSus
             </h1>
             <h3>
-                AppSus is a platform where you can<br></br>
-                reach your email and notes<br></br>
-                This website was made by Inbal Avidov & Omri Hazan<br></br>
+                AppSus is a platform where you can
+                reach your email and notes
+            </h3><br />
+            <h4>
+                This website was made by Inbal Avidov & Omri Hazan
                 we hope you'll enjoy this platform!
-            </h3>
+            </h4>
+
             <div className="home-links">
-            <Link to="/" ><img className="img-home home" src="./assets/img/home.png"/></Link>
-            <Link to="/mail"><img className="img-home mail" src="./assets/img/mail.png"/></Link>
-            <Link to="/note"><img className="img-home note" src="./assets/img/keep.png"/></Link>
-            <Link to="/about"><img className="img-home" src="./assets/img/about.png"/></Link>
+                <Link to="/" ><img className="img-home home" src="./assets/img/home.png" /></Link>
+                <Link to="/mail"><img className="img-home mail" src="./assets/img/mail.png" /></Link>
+                <Link to="/note"><img className="img-home note" src="./assets/img/keep.png" /></Link>
+                <Link to="/about"><img className="img-home" src="./assets/img/about.png" /></Link>
             </div>
         </div>
     </div>

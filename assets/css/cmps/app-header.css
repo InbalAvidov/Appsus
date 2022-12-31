@@ -4,14 +4,13 @@ header {
 
 .logo {
     font-family: ubuntu;
-
 }
 
 .app-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 20%;
+    height: 80px;
     padding: 10px 0;
 }
 
@@ -21,10 +20,8 @@ header {
 }
 
 nav img.img-menu {
-    width: 2.5em;
+    width: 2em;
 }
-
-
 
 @media (max-width:740px) {
     .menu-btn.header {
@@ -44,7 +41,6 @@ nav img.img-menu {
         border-radius: 30px;
         box-shadow: -6px 0px 14px rgb(0 0 0 / 20%);
         padding: 0 .5em;
-
     }
 
     nav a {
