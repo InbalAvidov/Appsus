@@ -21,3 +21,8 @@
 .grid {
     display: grid;
 }
+
+.active{
+    background-color: var(--clr-active);
+    border-radius: 50%;
+}

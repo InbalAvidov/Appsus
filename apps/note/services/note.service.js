@@ -1,5 +1,6 @@
 import { storageService } from "../../../services/async-storage.service.js"
 import { utilService } from "../../../services/util.service.js"
+import { mailService } from "../../mail/services/mail.service.js"
 
 const NOTE_KEY = 'noteDB'
 _createnotes()
@@ -15,6 +16,7 @@ export const NoteService = {
     pinNote,
     getNoteContent,
     setNoteColor,
+    turnMailToNote
 }
 
 function query(filterBy = getDefaultFilter()) {
@@ -53,7 +55,7 @@ function save(note) {
 }
 
 function getDefaultFilter() {
-   return { txt: '', type: '', pin: false }
+    return { txt: '', type: '', pin: false }
 }
 
 function _createnotes() {
@@ -65,7 +67,8 @@ function _createnotes() {
                 type: "note-txt",
                 isPinned: true,
                 info: {
-                    txt: "Fullstack Me Baby!"
+                    title: "Hey There",
+                    text: "Fullstack Me Baby!"
                 },
                 isPinned: false,
                 isEdit: false,
@@ -91,7 +94,7 @@ function _createnotes() {
                 id: "n103",
                 type: "note-todos",
                 info: {
-                    label: "Get my stuff together",
+                    title: "Get my stuff together",
                     todos: [
                         { txt: "Driving liscence", doneAt: null },
                         { txt: "Coding power", doneAt: 187111111 }
@@ -108,37 +111,37 @@ function _createnotes() {
 }
 
 function addNote(content, noteType, isPinned) {
+    console.log(content);
     if (noteType === 'note-txt') return _addTxtNote(content, isPinned)
     else if (noteType === 'note-img') return _addImgNote(content, isPinned)
     else if (noteType === 'note-video') return _addVideoNote(content, isPinned)
     if (noteType === 'note-todos') return _addTodosNote(content, isPinned)
 }
 
-function _addTxtNote(txt, isPinned) {
+function _addTxtNote({ title, txt }, isPinned) {
     const newNote = {
         id: '',
         type: "note-txt",
-        isPinned: false,
         info: {
+            title,
             txt,
         },
         isPinned,
         isEdit: false,
-        content: txt,
+        content: title + txt,
         color: "#e8eaed"
     }
     return save(newNote)
 }
 
-function _addTodosNote(text, isPinned) {
-    const todosText = text.split(',')
-    const label = todosText.splice(0, 1)
-    const todos = todosText.map((todo, idx) => ({ txt: todo, doneAt: null }))
+function _addTodosNote({ title, txt }, isPinned) {
+    const todosText = txt.split(',')
+    const todos = todosText.map(todo=> ({ txt: todo, doneAt: null }))
     const newNote = {
         id: "",
         type: "note-todos",
         info: {
-            label,
+            title,
             todos,
         },
         isPinned,
@@ -150,13 +153,13 @@ function _addTodosNote(text, isPinned) {
     return save(newNote)
 
 }
-function _addImgNote(src, isPinned) {
+function _addImgNote({ title, txt }, isPinned) {
     const newNote = {
         id: '',
         type: "note-img",
         info: {
-            url: src,
-            title: "Bobi and Me"
+            url: txt,
+            title,
         },
         style: {
             backgroundColor: "#00d"
@@ -170,18 +173,18 @@ function _addImgNote(src, isPinned) {
     return save(newNote)
 }
 
-function _addVideoNote(content, isPinned) {
-    const contentArr = content.split('/')
-    const videoId = contentArr[contentArr - 1]
+function _addVideoNote({ title, txt }, isPinned) {
+    const urlSplit = txt.split('/')
+    const videoId = urlSplit[urlSplit - 1]
     const newNote = {
         id: '',
         type: "note-video",
-        title: "My Video",
+        title,
         videoId,
         content,
-        isPinned: false,
+        isPinned,
         isEdit: false,
-        content: contentArr.join(''),
+        content: urlSplit.join(''),
         color: "#e8eaed"
 
     }
@@ -209,3 +212,22 @@ function getNoteContent(note) {
     }
 }
 
+function turnMailToNote(mailId) {
+    var note = {
+        id: '',
+        type: "note-txt",
+        isPinned: false,
+        isEdit: false,
+        color: "#e8eaed",
+        info: {}
+    }
+
+    mailService.get(mailId)
+        .then((mail) => {
+            note.info.title = mail.subject
+            note.info.txt = mail.body
+            note.content = mail.subject + mail.body
+        })
+
+    return save(note)
+}

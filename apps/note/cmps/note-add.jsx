@@ -5,7 +5,7 @@ const { useState, useEffect } = React
 
 export function NoteAdd({ loadNotes, note, setIsEdit }) {
     const [noteType, setNoteType] = useState('note-txt')
-    const [content, setContent] = useState('')
+    const [content, setContent] = useState({title:'',txt:''})
 
     useEffect(() => {
         if (!note) return
@@ -14,7 +14,7 @@ export function NoteAdd({ loadNotes, note, setIsEdit }) {
 
     function onAddNote() {
         NoteService.addNote(content, noteType, false).then(note => {
-            setContent('')
+            setContent({title:'',txt:''})
             loadNotes()
         })
         showSuccessMsg('Your note was added successfully!')
@@ -33,8 +33,8 @@ export function NoteAdd({ loadNotes, note, setIsEdit }) {
     }
 
     function handleChange({ target }) {
-        const { value } = target
-        setContent(value)
+        const { value , name:field } = target
+        setContent((prevContent)=>({...prevContent ,[field]:value }))
     }
 
     function onImgInput(ev) {
@@ -51,9 +51,13 @@ export function NoteAdd({ loadNotes, note, setIsEdit }) {
         reader.readAsDataURL(ev.target.files[0])
     }
 
+    console.log(content);
     return <div className="note-add flex space-between">
-        <input placeholder={noteType === 'note-img' ? "upload a photo" : noteType === 'note-todos' ? 'Title,task,task...' : noteType === 'note-txt' ? 'Take a note' : 'https://youtu.be/XXXXXXX'} onChange={handleChange} value={content} />
-        {!note && <div className="note-add-btn">
+        <div className="note-add-input">
+        <input placeholder="Title" onChange={handleChange} value={content.title}  name="title" />  
+        <input placeholder={noteType === 'note-img' ? "upload a photo" : noteType === 'note-todos' ? 'Task,task...' : noteType === 'note-txt' ? 'text...' : 'https://youtu.be/XXXXXXX'} onChange={handleChange} value={content.txt} name="txt" />
+        </div>
+        {!note && <div className="note-add-btns">
             <button onClick={() => setNoteType('note-img')} className={noteType === 'note-img' ? 'active' : ''}>
                 <input id="img" style={{ display: 'none' }} type="file" className="file-input btn" onChange={onImgInput} />
                 <label htmlFor="img" className="fa-regular fa-image" title="Upload photo"></label>
@@ -61,7 +65,7 @@ export function NoteAdd({ loadNotes, note, setIsEdit }) {
             <button title="Video" onClick={() => setNoteType('note-video')} className={noteType === 'note-video' ? 'active' : ''}><span className="fa-solid fa-play"></span></button>
             <button title="List" onClick={() => setNoteType('note-todos')} className={noteType === 'note-todos' ? 'active' : ''}><span className="fa-solid fa-list"></span></button>
             <button title="Text" onClick={() => setNoteType('note-txt')} className={noteType === 'note-txt' ? 'active' : ''}><span className="fa-solid fa-edit"></span></button>
-            <button onClick={onAddNote}>Add</button>
+            <button className="note-add-btn" onClick={onAddNote}>Add</button>
         </div>}
         {note &&
             <div>

@@ -2,7 +2,7 @@
     background-color:#323232    ;
     color: whitesmoke;
     padding: 0.5em;
-    position: absolute;
+    position: fixed;
     bottom: 1em;
     left: 1em;
     font-weight: 700;

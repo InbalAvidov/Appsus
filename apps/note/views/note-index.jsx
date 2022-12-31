@@ -1,4 +1,6 @@
 const { useState, useEffect } = React
+const { useParams} = ReactRouterDOM
+
 
 
 import { NoteAdd } from "../cmps/note-add.jsx"
@@ -12,10 +14,17 @@ export function NoteIndex() {
 
     const [notes, setNotes] = useState([])
     const [filterBy, setFilterBy] = useState(NoteService.getDefaultFilter())
+    const {mailId} = useParams()
 
     useEffect(() => {
         loadNotes()
     }, [filterBy])
+
+    useEffect(() => {
+        if(!mailId) return
+        NoteService.turnMailToNote(mailId)
+        .then(loadNotes())
+    }, [mailId])
 
     function loadNotes() {
         NoteService.query(filterBy)
@@ -23,6 +32,7 @@ export function NoteIndex() {
                 setNotes(notes)
             })
     }
+
 
     return <main className="main-notes main-layout full">
         <div className="notes-container">

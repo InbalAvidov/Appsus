@@ -26,6 +26,7 @@ nav img.img-menu{
 }
 
 
+
 @media (max-width:740px) {
     .menu-btn.header{
         display: inline-block;
@@ -52,9 +53,11 @@ nav img.img-menu{
         visibility: inherit;
     }
 
+    
     nav img.img-menu{
-        width: 5em;
+        width: 3em;
         padding: 10px;
+        margin: 0 1em ;
     }
     
 }
