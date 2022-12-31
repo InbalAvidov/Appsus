@@ -1,5 +1,5 @@
 const { useState, useEffect } = React
-const { useParams} = ReactRouterDOM
+const { useParams } = ReactRouterDOM
 
 
 
@@ -14,16 +14,16 @@ export function NoteIndex() {
 
     const [notes, setNotes] = useState([])
     const [filterBy, setFilterBy] = useState(NoteService.getDefaultFilter())
-    const {mailId} = useParams()
+    const { mailId } = useParams()
 
     useEffect(() => {
         loadNotes()
     }, [filterBy])
 
     useEffect(() => {
-        if(!mailId) return
+        if (!mailId) return
         NoteService.turnMailToNote(mailId)
-        .then(loadNotes())
+            .then(loadNotes())
     }, [mailId])
 
     function loadNotes() {
@@ -34,17 +34,15 @@ export function NoteIndex() {
     }
 
 
-    return <main className="main-notes main-layout full">
-        <div className="notes-container">
+    return <main className="main-notes">
 
-        <NoteFilter setFilterBy={setFilterBy} />
             <div className="note-section">
+                <NoteFilter setFilterBy={setFilterBy} />
                 <NoteAdd loadNotes={loadNotes} />
 
                 {notes && <NoteList notes={notes} loadNotes={loadNotes} />}
                 {!notes.length || !notes && <h2>No results...</h2>}
             </div>
-        </div>
     </main>
 
 }

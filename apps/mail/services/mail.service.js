@@ -104,8 +104,8 @@ function getEmptyMail() {
 function getEmptySentMail() {
     return {
         id: utilService.makeId(),
-        subject: '',
-        body: '',
+        subject: utilService.makeLorem(2),
+        body: utilService.makeLorem(10),
         isStarred: false,
         isRead: true,
         sentAt: Date.now(),

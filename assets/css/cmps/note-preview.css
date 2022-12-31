@@ -7,11 +7,11 @@
    margin: 10px 0;
    padding-top: 5px;
    border-radius: 1em;
+   height: fit-content;
 }
 
 .note-preview .note-btns {
    visibility: hidden;
-   padding: 1.7em 0 .5em;
 }
 
 .note-preview .note-btns.selected {
@@ -20,6 +20,7 @@
 
 .note-preview img {
    width: 90%;
+   height: 150px;
    object-fit: cover;
 }
 
@@ -42,6 +43,10 @@ button.pin {
       margin: 10px;
       min-width: 40%;
    }
+   .note-preview .note-btns {
+      padding: 1em 0 .5em;
+   }
+   
 }
 
 @media (min-width:740px) {
@@ -52,7 +57,9 @@ button.pin {
    .note-preview:hover .note-btns {
       visibility: inherit;
    }
-
+   .note-preview .note-btns {
+      padding: 1em 0 .5em;
+   }
 }
 
 @media (min-width:980px) {
