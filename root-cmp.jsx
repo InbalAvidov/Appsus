@@ -16,10 +16,12 @@ import { UserMsg } from "./cmps/user-msg.jsx"
 
 export function App() {
 
-   
+    
+   const page = window.location.url
+   console.log(page);
     return <Router>
         <section className="app main-layout">
-            <AppHeader />
+           {  <AppHeader />}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />

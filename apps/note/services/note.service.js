@@ -68,7 +68,7 @@ function _createnotes() {
                 isPinned: true,
                 info: {
                     title: "Hey There",
-                    text: "Fullstack Me Baby!"
+                    txt: "Fullstack Me Baby!"
                 },
                 isPinned: false,
                 isEdit: false,
