@@ -41,7 +41,7 @@ button.pin {
 @media (max-width:740px) {
    .note-preview {
       margin: 10px;
-      min-width: 40%;
+      min-width: 100%;
    }
    .note-preview .note-btns {
       padding: 1em 0 .5em;

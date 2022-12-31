@@ -202,13 +202,31 @@ function setNoteColor(note, color) {
 
 
 function getNoteContent(note) {
-    if (note.type === 'note-txt') return note.info.txt
-    else if (note.type === 'note-img') return note.info.url
-    else if (note.type === 'note-video') return note.content
+    console.log(note.info);
+    if (note.type === 'note-txt'){
+        return {
+            title:note.info.title,
+            txt:note.info.txt
+        }
+    }
+    else if (note.type === 'note-img') {
+            return {
+                title:note.info.title,
+                txt:note.info.url
+            }
+    }
+    else if (note.type === 'note-video') {
+        return {
+            title:note.info.title,
+            txt:note.info.url
+        }
+    }
     if (note.type === 'note-todos') {
-        const todos = [...note.info.todos]
-        const todosText = todos.map(todo => todo.txt)
-        return [note.info.label, ...todosText].join(',')
+        const todos = note.info.todos.map(todo => todo.txt)
+        return {
+            title:note.info.title,
+            txt:todos.join(',')
+        }
     }
 }
 
