@@ -51,7 +51,6 @@ export function NoteAdd({ loadNotes, note, setIsEdit }) {
         reader.readAsDataURL(ev.target.files[0])
     }
 
-    console.log(content);
     return <div className="note-add flex space-between">
         <div className="note-add-input">
             <input className="title" placeholder="Title" onChange={handleChange} value={content.title} name="title" />

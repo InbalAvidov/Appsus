@@ -5,7 +5,6 @@ const { useState, useEffect, useRef} = React
 export function NoteFilter({ setFilterBy }) {
     const [filterByToEdit, setFilterByToEdit] = useState(NoteService.getDefaultFilter())
     const [checked, setChecked] = useState(false)
-    const [menuOpen, setMenuOpen] = useState(false)
 
     useEffect(() => {
         setFilterBy(filterByToEdit)
@@ -25,16 +24,13 @@ export function NoteFilter({ setFilterBy }) {
         setFilterBy(filterByToEdit)
     }
 
-    function toggleMenu(ev){
-        ev.preventDefault()
-        setMenuOpen(!menuOpen)
-    }
+    console.log(filterByToEdit);
     return <div className="note-filter">
             <label htmlFor="pin"><span className="fa-solid fa-pin"></span>
                 <input style={{ accentColor: 'black' }} name="pin" id="pin" type="checkbox" onChange={handleChange} />
             </label>
             <div className="search-bar">
-                <input name="content" placeholder="search..." value={filterByToEdit.txt} onChange={handleChange} />
+                <input name="txt" placeholder="search..." value={filterByToEdit.txt} onChange={handleChange} />
                 <button onSubmit={onSubmitFilter}><span className="fa-solid fa-search"></span></button>
             </div>
             <label htmlFor="type" className="label-type">
