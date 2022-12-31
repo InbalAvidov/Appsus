@@ -18,7 +18,7 @@ export function About() {
                 <div className="dev-info">
                     <h3>Omri Hazan</h3>
                     <p>Omri is 24 years old.
-                        He is living in Oranit with her girlfriend
+                        He is living in Oranit with his girlfriend
                         /co-developer of this app - Inbal !
                         Omri is responsible for the Mail app.
                     </p>

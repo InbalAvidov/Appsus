@@ -2,18 +2,29 @@ import { mailService } from "../services/mail.service.js";
 
 import { MailList } from "../cmps/mail-list.jsx";
 import { MailSearch } from "../cmps/mail-search.jsx";
-import { MailFilter } from "../cmps/mail-filter.jsx";
 
-const { useState } = React
+const { useState, useEffect, useRef } = React
 
 export function MailIndex() {
     const [filter, setFilter] = useState(mailService.getDefaultFilter())
-    function onSetFilter(type, val) {
-        setFilter({ ...filter, [type]: val })
+    const [count, setCount] = useState(0)
+    function onSetFilter(filterFromCmps) {
+        setFilter({ ...filter, ...filterFromCmps })
     }
-    return <div className="main-mail "> 
-        <MailFilter onSetFilter={onSetFilter}/>
-        <MailSearch onSetFilter={onSetFilter} />
+    useEffect(() => {
+        mailService.query().then(mails => {
+            setCount(0)
+            mails.forEach(mail => {
+                if (!mail.isRead) {
+                    console.log('mail.id ,mail.isRead', mail.id, mail.isRead)
+                    setCount(prevCount => prevCount += 1)
+                }
+            })
+            console.log('count', count)
+        })
+    }, [])
+    return <div className="main-mail ">
+        <MailSearch onSetFilter={onSetFilter} count={count} />
         <MailList onSetFilter={onSetFilter} filter={filter} />
     </div>
 }

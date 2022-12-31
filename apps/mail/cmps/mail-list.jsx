@@ -6,7 +6,6 @@ const { useState, useEffect, useRef } = React
 export function MailList({ onSetFilter, filter }) {
     const [mails, setMails] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-    const countUnreadRef = useRef(0)
     useEffect(() => {
         setIsLoading(true)
         loadMails()
@@ -14,21 +13,11 @@ export function MailList({ onSetFilter, filter }) {
 
     function loadMails() {
         mailService.query(filter).then((filterdMails) => {
-            countUnreadRef.current = 0
-            console.log(mails)
-            filterdMails.forEach(mail => {
-                console.log('mail.isRead', mail.isRead, mail.id)
-                if (!mail.isRead) {
-                    countUnreadRef.current += 1
-                    console.log(countUnreadRef.current)
-                }
-            });
             setMails(filterdMails)
             setIsLoading(false)
         })
     }
     return <div className="main-mail">
-        <h2 className="fa-solid fa-envelope unread-msg"><p>{countUnreadRef.current}</p></h2>
         <MailNav onSetFilter={onSetFilter} />
         {!isLoading && <table>
             <tbody className="mail-list">

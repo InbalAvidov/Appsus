@@ -19,7 +19,10 @@ table {
     flex-grow: 2;
     background-color: #ffffff;
     border-collapse: collapse;
+}
 
+.read {
+    background-color: var(--clr6);
 }
 
 .starred {
@@ -57,21 +60,3 @@ td.star {
     padding: 0 10px;
 }
 
-.unread-msg {
-    position: relative;
-    left: 60px;
-    font-size: 2em;
-    margin-top: 10px;
-}
-
-.unread-msg p {
-    position: absolute;
-    top: -7px;
-    left: -7px;
-    font-size: .8rem;
-    background-color: rgb(63, 63, 63);
-    padding: 3px 6px;
-    border-radius: 50%;
-    color: whitesmoke;
-    border: 2px solid whitesmoke;
-}

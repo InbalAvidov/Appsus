@@ -12,9 +12,8 @@ export const mailService = {
     getEmptyMail,
     debounce,
     setIsStarred,
-    setIsRead,
+    setIsRead
 }
-
 
 const loggedinUser = {
     email: 'user@appsus.com',
@@ -28,7 +27,6 @@ const criteria = {
     isStared: true, // (optional property, if missing: show all)
     lables: ['important', 'romantic'] // has any of the labels
 }
-
 
 function query(filterBy = getDefaultFilter()) {
     return storageService.query(MAIL_KEY)
@@ -120,11 +118,11 @@ function getDefaultFilter() {
     return { txt: '', page: '', status: '' }
 }
 
-
 function setIsStarred(mail) {
     mail.isStarred = !mail.isStarred
     return save(mail)
 }
+
 function setIsRead(mail) {
     mail.isRead = true
     return save(mail)

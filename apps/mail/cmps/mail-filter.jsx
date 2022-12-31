@@ -15,6 +15,6 @@ export function MailFilter({ onSetFilter }) {
             target.innerText = 'Show only unread'
         }
     }
-    return <button onClick={handleChange}>Show only unread</button>
+    return <button className="toogle-filter" onClick={handleChange}>Show only unread</button>
 
 }

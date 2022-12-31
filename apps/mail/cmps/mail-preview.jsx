@@ -6,7 +6,7 @@ const { Link, useNavigate } = ReactRouterDOM
 export function MailPreview({ mail, loadMails }) {
     const navigate = useNavigate()
     let classStarred = mail.isStarred ? 'starred' : ''
-    let classRead = mail.isRead ? '' : 'unread'
+    let classRead = mail.isRead ? 'read' : ''
     function toggleStarred({ target }) {
         target.classList.toggle('starred')
         return mailService.setIsStarred(mail)
