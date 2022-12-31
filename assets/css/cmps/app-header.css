@@ -22,8 +22,9 @@ header {
 
 nav img.img-menu{
     width: 2.5em;
-    margin: 0 1em;
+    margin: 0 0 0 2em ;
 }
+
 
 @media (max-width:740px) {
     .menu-btn.header{
