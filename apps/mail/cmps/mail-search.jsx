@@ -13,7 +13,7 @@ export function MailSearch({ onSetFilter, count }) {
     }, [filter])
     function handleChange({ target }) {
         if (target.type === 'select-one') {
-            setFilter((prevFilter) => ({ ...prevFilter, sort: target.value}))
+            setFilter((prevFilter) => ({ ...prevFilter, sort: target.value }))
         }
         else if (target.type === 'text') {
             let { value: txt } = target
@@ -32,21 +32,21 @@ export function MailSearch({ onSetFilter, count }) {
     }
     return <div className="mail-header">
         <form className="search-bar mail">
-        <label htmlFor="search">
-            <input
-                type="text"
-                name="search"
-                id="search"
-                placeholder="Search"
-                value={filter.txt}
-                onChange={handleChange}
-            />
-        </label>
-        <button><span className="fa-solid fa-search"></span></button>
+            <label htmlFor="search">
+                <input
+                    type="text"
+                    name="search"
+                    id="search"
+                    placeholder="Search"
+                    value={filter.txt}
+                    onChange={handleChange}
+                />
+            </label>
+            <button><span className="fa-solid fa-search"></span></button>
         </form>
+        <div className="search-filters">
             <button className="toggle-filter" onClick={handleChange}>Unread</button>
             <h2 className="fa-solid fa-envelope unread-msg"><p>{count}</p></h2>
-            <button className="toogle-filter" onClick={handleChange}>Show only unread</button>
             <label htmlFor="sort-by">View by:
                 <select name="sort-by" id="sort-by" onChange={handleChange}>
                     <option value="">None</option>

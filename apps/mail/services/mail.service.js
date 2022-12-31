@@ -36,7 +36,7 @@ function query(filterBy = getDefaultFilter()) {
                     mails = mails.sort((a, b) => (a.date > b.date) ? 1 : -1)
                 }
                 if (filterBy.sort === 'title') {
-                    mails = mails.sort((a, b) => (a.title > b.title) ? 1 : -1)
+                    mails = mails.sort((a, b) => a.subject.localeCompare(b.subject))
                 }
             }
             if (filterBy.status) {
