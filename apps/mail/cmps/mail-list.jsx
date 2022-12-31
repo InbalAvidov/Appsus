@@ -20,13 +20,13 @@ export function MailList({ onSetFilter, filter }) {
     return <div className="main-mail">
         <MailNav onSetFilter={onSetFilter} />
         {!isLoading && <table>
+                {isLoading && <tr> Loading...</tr>}
+                {!mails.length && <tr>No items to show..</tr>}
             <tbody className="mail-list">
                 {mails.map(mail => {
                     return <MailPreview mail={mail} loadMails={loadMails} key={mail.id} />
                 })}</tbody>
         </table >}
-        {isLoading && <p> Loading...</p>}
-        {!mails.length && <p>No items to show..</p>}
     </div >
 
 }

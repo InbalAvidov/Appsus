@@ -5,7 +5,7 @@ const { useState, useEffect } = React
 
 export function NoteAdd({ loadNotes, note, setIsEdit }) {
     const [noteType, setNoteType] = useState('note-txt')
-    const [content, setContent] = useState({title:'',txt:''})
+    const [content, setContent] = useState({ title: '', txt: '' })
 
     useEffect(() => {
         if (!note) return
@@ -14,7 +14,7 @@ export function NoteAdd({ loadNotes, note, setIsEdit }) {
 
     function onAddNote() {
         NoteService.addNote(content, noteType, false).then(note => {
-            setContent({title:'',txt:''})
+            setContent({ title: '', txt: '' })
             loadNotes()
         })
         showSuccessMsg('Your note was added successfully!')
@@ -33,8 +33,8 @@ export function NoteAdd({ loadNotes, note, setIsEdit }) {
     }
 
     function handleChange({ target }) {
-        const { value , name:field } = target
-        setContent((prevContent)=>({...prevContent ,[field]:value }))
+        const { value, name: field } = target
+        setContent((prevContent) => ({ ...prevContent, [field]: value }))
     }
 
     function onImgInput(ev) {
@@ -54,8 +54,8 @@ export function NoteAdd({ loadNotes, note, setIsEdit }) {
     console.log(content);
     return <div className="note-add flex space-between">
         <div className="note-add-input">
-        <input placeholder="Title" onChange={handleChange} value={content.title}  name="title" />  
-        <input placeholder={noteType === 'note-img' ? "upload a photo" : noteType === 'note-todos' ? 'Task,task...' : noteType === 'note-txt' ? 'text...' : 'https://youtu.be/XXXXXXX'} onChange={handleChange} value={content.txt} name="txt" />
+            <input className="title" placeholder="Title" onChange={handleChange} value={content.title} name="title" />
+            <input className="text" placeholder={noteType === 'note-img' ? "upload a photo" : noteType === 'note-todos' ? 'Task,task...' : noteType === 'note-txt' ? 'text...' : 'https://youtu.be/XXXXXXX'} onChange={handleChange} value={content.txt} name="txt" />
         </div>
         {!note && <div className="note-add-btns">
             <button onClick={() => setNoteType('note-img')} className={noteType === 'note-img' ? 'active' : ''}>

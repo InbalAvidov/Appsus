@@ -2,9 +2,9 @@ header {
     border-bottom: 2px solid white;
 }
 
-.logo{
+.logo {
     font-family: ubuntu;
-    
+
 }
 
 .app-header {
@@ -15,55 +15,63 @@ header {
     padding: 10px 0;
 }
 
-.main-menu{
+.main-menu {
     display: flex;
     align-items: center;
 }
 
-nav img.img-menu{
+nav img.img-menu {
     width: 2.5em;
-    margin: 0 0 0 2em ;
 }
 
 
 
 @media (max-width:740px) {
-    .menu-btn.header{
+    .menu-btn.header {
         display: inline-block;
     }
 
-    nav{
+    nav {
         visibility: hidden;
         position: absolute;
         display: flex;
         flex-direction: column;
+        align-items: center;
         right: 0;
-        top: 0px;
-        background-color:var(--clr-bg);
+        top: 10vh;
+        background-color: var(--clr-bg);
         z-index: 2;
         border-radius: 30px;
         box-shadow: -6px 0px 14px rgb(0 0 0 / 20%);
+        padding: 0 .5em;
 
     }
 
-    .main-menu:hover nav{
+    nav a {
+        width: fit-content;
+    }
+
+    .main-menu:hover nav {
         visibility: inherit;
     }
-    nav:hover nav{
+
+    nav:hover nav {
         visibility: inherit;
     }
 
-    
-    nav img.img-menu{
+
+    nav img.img-menu {
         width: 3em;
-        padding: 10px;
-        margin: 0 1em ;
+        margin: .3em 0;
     }
-    
+
 }
+
 @media (min-width:740px) {
-    .menu-btn.header{
+    .menu-btn.header {
         display: none;
     }
-   
+    nav a {
+       padding-left: 20px;
+    }
 }

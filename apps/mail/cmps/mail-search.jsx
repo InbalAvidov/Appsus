@@ -21,16 +21,17 @@ export function MailSearch({ onSetFilter, count }) {
         } else {
             if (status === '') {
                 setStatus('unread')
-                target.innerText = 'Show only unread'
+                target.innerText = 'Unread'
             }
             else {
                 setStatus('')
-                target.innerText = 'Show all'
+                target.innerText = 'All'
             }
             setFilter((prevFilter) => ({ ...prevFilter, status: status }))
         }
     }
-    return <div className="search-bar mail">
+    return <div className="mail-header">
+        <form className="search-bar mail">
         <label htmlFor="search">
             <input
                 type="text"
@@ -42,7 +43,8 @@ export function MailSearch({ onSetFilter, count }) {
             />
         </label>
         <button><span className="fa-solid fa-search"></span></button>
-        <div className="msgs-status">
+        </form>
+            <button className="toggle-filter" onClick={handleChange}>Unread</button>
             <h2 className="fa-solid fa-envelope unread-msg"><p>{count}</p></h2>
             <button className="toogle-filter" onClick={handleChange}>Show only unread</button>
             <label htmlFor="sort-by">View by:

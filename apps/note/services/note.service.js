@@ -176,12 +176,12 @@ function _addImgNote({ title, txt }, isPinned) {
 function _addVideoNote({ title, txt }, isPinned) {
     const urlSplit = txt.split('/')
     const videoId = urlSplit[urlSplit - 1]
+    console.log(videoId);
     const newNote = {
         id: '',
         type: "note-video",
         title,
         videoId,
-        content,
         isPinned,
         isEdit: false,
         content: urlSplit.join(''),

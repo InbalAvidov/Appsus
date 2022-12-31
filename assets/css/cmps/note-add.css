@@ -1,20 +1,45 @@
 .note-add {
-    background-color: var(--clr1);
-    padding: 1em;
+    background-color: var(--clr-bg);
+    padding: 1em 1em 0 ;
+    border: 2px solid var(--clr1);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
-
 
 .note-add-input {
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.note-add-btn {
-    margin: 4px;
+.note-add-input input {
+    background-color: var(--clr1);
+    padding: 10px 0;
 }
 
+.note-add-input input.title {
+    margin-bottom: 10px;
+}
+
+.note-add-btns {
+    display: flex;
+    align-self: center;
+}
+
+.note-add-btns button {
+    padding: 10px 6px;
+    margin: 10px 10px;
+}
+
+
 .note-add-btn {
+    grid-column: 1 span 4;
+    width: fit-content;
+    align-self: center;
     background-color: rgb(66, 66, 66);
     color: whitesmoke;
-    padding: 5px 8px;
+    padding: 10px ;
+    margin-top: 10px;
     border-radius: 10px;
 }
