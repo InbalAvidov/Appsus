@@ -8,7 +8,7 @@ export function MailNav({ onSetFilter }) {
     const [filterByToEdit, setFilterByToEdit] = useState(mailService.getDefaultFilter())
     const pageRef = useRef('inbox')
     useEffect(() => {
-        onSetFilter(filterByToEdit)
+        onSetFilter({...filterByToEdit})
     }, [filterByToEdit])
 
     function handleChange(page) {

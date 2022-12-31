@@ -16,7 +16,6 @@ export function MailIndex() {
             setCount(0)
             mails.forEach(mail => {
                 if (!mail.isRead) {
-                    console.log('mail.id ,mail.isRead', mail.id, mail.isRead)
                     setCount(prevCount => prevCount += 1)
                 }
             })
