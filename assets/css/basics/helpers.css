@@ -22,7 +22,9 @@
     display: grid;
 }
 
+.active.note{
+    font-size: 1.4em;
+}
 .active{
-    background-color: var(--clr-active);
-    border-radius: 50%;
+    font-size: 1.5em;
 }

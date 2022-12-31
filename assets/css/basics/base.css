@@ -15,7 +15,6 @@ body {
 
 html {
     background-color: var(--clr-bg);
-    font-size: 14px;
     text-align: start;
     font-family: Google Sans, roboto, Helvetica, Arial, sans-serif;
 }
@@ -83,7 +82,7 @@ img {
 
 @media (max-width:740px) {
     html{
-        font-size: 20px;
+        font-size: 18px;
     }
     button, input{
         font-size: 1em;
