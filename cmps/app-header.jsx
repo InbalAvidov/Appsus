@@ -1,11 +1,6 @@
 const { Link, NavLink } = ReactRouterDOM
 
 export function AppHeader() {
-    function toggleNav({target}){
-        target.classList.toggle('toggle-menu')
-        console.log(target)
-    }
-
     return <header className="app-header full main-layout">
         <Link to="/">
             <h1 className="logo">AppSus</h1>
@@ -18,7 +13,8 @@ export function AppHeader() {
                 <NavLink to="/about"><img className="img-menu" src="./assets/img/about.png" /></NavLink>
             </nav>
             <button>
-                <span className="fa-solid fa-menu menu-btn header" onClick={toggleNav}></span>
+                <img className="menu-icon" src="./assets/img/grid menu.jpeg" alt="" />
+                {/* <span className="fa-solid fa-menu menu-btn header"></span> */}
             </button>
         </div>
     </header>

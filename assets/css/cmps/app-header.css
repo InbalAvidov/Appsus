@@ -72,3 +72,9 @@ nav img.img-menu {
     width: 40px;
     object-fit: contain;
 }
+
+.menu-icon {
+    height: 24px;
+    position: relative;
+    right: -5px;
+}
