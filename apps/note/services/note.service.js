@@ -128,7 +128,6 @@ function _addTxtNote({ title, txt }, isPinned) {
         },
         isPinned,
         isEdit: false,
-        content: title + txt,
         color: "#e8eaed"
     }
     return save(newNote)
@@ -146,7 +145,6 @@ function _addTodosNote({ title, txt }, isPinned) {
         },
         isPinned,
         isEdit: false,
-        content: todosText.join(''),
         color: "#e8eaed"
 
     }
@@ -166,7 +164,6 @@ function _addImgNote({ title, txt }, isPinned) {
         },
         isPinned,
         isEdit: false,
-        content: src,
         color: "#e8eaed"
 
     }
@@ -184,8 +181,8 @@ function _addVideoNote({ title, txt }, isPinned) {
         videoId,
         isPinned,
         isEdit: false,
-        content: urlSplit.join(''),
-        color: "#e8eaed"
+        color: "#e8eaed",
+        url:urlSplit.join('')
 
     }
     return save(newNote)
@@ -217,8 +214,8 @@ function getNoteContent(note) {
     }
     else if (note.type === 'note-video') {
         return {
-            title:note.info.title,
-            txt:note.info.url
+            title:note.title,
+            txt:note.url
         }
     }
     if (note.type === 'note-todos') {
