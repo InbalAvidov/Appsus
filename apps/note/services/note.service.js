@@ -23,8 +23,7 @@ function query(filterBy = getDefaultFilter()) {
     return storageService.query(NOTE_KEY)
         .then(notes => {
             if (filterBy.txt) {
-                const regex = new RegExp(filterBy.txt, 'i')
-                notes = notes.filter(note => regex.test(note.content))
+                notes = notes.filter(note => note.content.includes(filterBy.txt))
             }
             if (filterBy.type) {
                 notes = notes.filter(note => note.type === filterBy.type)
@@ -72,7 +71,7 @@ function _createnotes() {
                 },
                 isPinned: false,
                 isEdit: false,
-                content: "Fullstack Me Baby!",
+                content: "Hey there Fullstack Me Baby!",
                 color: "#e8eaed"
             },
             {
@@ -128,15 +127,15 @@ function _addTxtNote({ title, txt }, isPinned) {
         },
         isPinned,
         isEdit: false,
-        content: title + txt,
-        color: "#e8eaed"
+        color: "#e8eaed",
+        content: title + txt
     }
     return save(newNote)
 }
 
 function _addTodosNote({ title, txt }, isPinned) {
     const todosText = txt.split(',')
-    const todos = todosText.map(todo=> ({ txt: todo, doneAt: null }))
+    const todos = todosText.map(todo => ({ txt: todo, doneAt: null }))
     const newNote = {
         id: "",
         type: "note-todos",
@@ -146,8 +145,9 @@ function _addTodosNote({ title, txt }, isPinned) {
         },
         isPinned,
         isEdit: false,
-        content: todosText.join(''),
-        color: "#e8eaed"
+        color: "#e8eaed",
+        content: title + txt
+
 
     }
     return save(newNote)
@@ -166,8 +166,9 @@ function _addImgNote({ title, txt }, isPinned) {
         },
         isPinned,
         isEdit: false,
-        content: src,
-        color: "#e8eaed"
+        color: "#e8eaed",
+        content: title + txt
+
 
     }
     return save(newNote)
@@ -184,8 +185,10 @@ function _addVideoNote({ title, txt }, isPinned) {
         videoId,
         isPinned,
         isEdit: false,
-        content: urlSplit.join(''),
-        color: "#e8eaed"
+        color: "#e8eaed",
+        url: urlSplit.join(''),
+        content: title + txt
+
 
     }
     return save(newNote)
@@ -203,29 +206,29 @@ function setNoteColor(note, color) {
 
 function getNoteContent(note) {
     console.log(note.info);
-    if (note.type === 'note-txt'){
+    if (note.type === 'note-txt') {
         return {
-            title:note.info.title,
-            txt:note.info.txt
+            title: note.info.title,
+            txt: note.info.txt
         }
     }
     else if (note.type === 'note-img') {
-            return {
-                title:note.info.title,
-                txt:note.info.url
-            }
+        return {
+            title: note.info.title,
+            txt: note.info.url
+        }
     }
     else if (note.type === 'note-video') {
         return {
-            title:note.info.title,
-            txt:note.info.url
+            title: note.title,
+            txt: note.url
         }
     }
     if (note.type === 'note-todos') {
         const todos = note.info.todos.map(todo => todo.txt)
         return {
-            title:note.info.title,
-            txt:todos.join(',')
+            title: note.info.title,
+            txt: todos.join(',')
         }
     }
 }
