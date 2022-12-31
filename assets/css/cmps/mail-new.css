@@ -1,26 +1,32 @@
-.mail-new{
+.mail-new {
     display: flex;
     flex-direction: column;
     height: 80vh;
 }
 
-.mail-new >*{
+.mail-new>* {
     width: 100%;
     border: .5px solid rgb(214, 213, 213);
     border-top: 0;
-    padding: 10px ;
+    padding: 10px;
 }
 
-.mail-new label{
+.mail-new label {
     font-weight: bold;
 }
 
-.mail-new .new-mail-body{
+.mail-new .new-mail-body {
     flex: 1;
 }
 
-.link-btn{
+.link-btn {
     display: flex;
     justify-content: space-between;
     border: none;
+}
+
+.mail-msg {
+    width: 100%;
+    height: 100%;
+    display: flex;
 }

@@ -11,7 +11,6 @@ export function NotePreview({ note, loadNotes }) {
     const [isEdit, setIsEdit] = useState(false)
     const [isSelected, setIsSelected] = useState(false)
 
-
     function onRemoveNote(ev) {
         ev.stopPropagation()
         NoteService.remove(note.id).then(() => {
@@ -53,7 +52,6 @@ export function NotePreview({ note, loadNotes }) {
     function onSelectNote() {
         setIsSelected(!isSelected)
     }
-
 
     return <div className="note-preview" style={{ backgroundColor: `${note.color}` }} onClick={onSelectNote} >
         {!isEdit && <NotePreviewByType note={note} loadNotes={loadNotes} />}

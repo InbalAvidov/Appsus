@@ -20,9 +20,9 @@ export function MailList({ onSetFilter, filter }) {
     return <div className="main-mail">
         <MailNav onSetFilter={onSetFilter} />
         {!isLoading && <table>
-                {isLoading && <tr> Loading...</tr>}
-                {!mails.length && <tr>No items to show..</tr>}
             <tbody className="mail-list">
+                {isLoading && <tr><td> Loading...</td></tr>}
+                {!mails.length && <tr><td> No items to show...</td></tr>}
                 {mails.map(mail => {
                     return <MailPreview mail={mail} loadMails={loadMails} key={mail.id} />
                 })}</tbody>

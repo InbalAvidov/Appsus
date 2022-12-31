@@ -24,7 +24,7 @@
 .unread-msg {
     position: relative;
     right: 0px;
-    font-size: 2em;
+    font-size: 1.8em;
 }
 
 .unread-msg p {
@@ -45,6 +45,12 @@
     background-color: #eaf1fb;
     border-radius: 10px;
     font-weight: bold;
+}
+
+.search-filters{
+    display: flex;
+    justify-content: space-between;
+    width: 280px;
 }
 
 @media (max-width:740px) {

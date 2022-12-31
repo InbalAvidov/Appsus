@@ -31,6 +31,14 @@ const criteria = {
 function query(filterBy = getDefaultFilter()) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
+            if (filterBy.sort) {
+                if (filterBy.sort === 'date') {
+                    mails = mails.sort((a, b) => (a.date > b.date) ? 1 : -1)
+                }
+                if (filterBy.sort === 'title') {
+                    mails = mails.sort((a, b) => a.subject.localeCompare(b.subject))
+                }
+            }
             if (filterBy.status) {
                 mails = mails.filter(mail => !mail.isRead && mail.to === loggedinUser.email)
             }
@@ -115,7 +123,7 @@ function getEmptySentMail() {
 }
 
 function getDefaultFilter() {
-    return { txt: '', page: '', status: '' }
+    return { txt: '', page: '', status: '', sort: '' }
 }
 
 function setIsStarred(mail) {
