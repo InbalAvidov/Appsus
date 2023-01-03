@@ -1,11 +1,11 @@
-.mail-header{
+.mail-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .search-bar.mail {
-    margin: 0;
+    margin: 5px 0;
     margin-inline-end: 10px;
     width: 100%;
     border-radius: 15px;
@@ -41,25 +41,27 @@
     border: 2px solid whitesmoke;
 }
 
-.toggle-filter {
-    width: 75px;
-    height: 20px;
+.toggle-filter,
+.search-filters select {
+    outline: none;
+    border: unset;
+    min-width: 70px;
     background-color: #eaf1fb;
     border-radius: 10px;
     font-weight: bold;
+    padding: 12px 12px;
 }
 
-.search-filters{
+.search-filters {
+    margin-left: 11px;
     display: flex;
     justify-content: space-between;
-    width: 280px;
+    align-items: center;
+    min-width: 230px;
 }
 
 @media (max-width:740px) {
     .toggle-filter {
         font-size: 16px;
-    } 
- }
- 
- 
- 
+    }
+}

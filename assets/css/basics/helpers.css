@@ -26,5 +26,5 @@
     font-size: 1.4em;
 }
 .active{
-    font-size: 1.2em;
+    transform: scale(1.1);
 }

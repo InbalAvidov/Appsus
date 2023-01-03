@@ -19,7 +19,7 @@ export function MailList({ onSetFilter, filter }) {
     }
     return <div className="main-mail">
         <MailNav onSetFilter={onSetFilter} />
-        {!isLoading && <table>
+        {!isLoading && <table className='main-mail'>
             <tbody className="mail-list">
                 {isLoading && <tr><td> Loading...</td></tr>}
                 {!mails.length && <tr><td> No items to show...</td></tr>}

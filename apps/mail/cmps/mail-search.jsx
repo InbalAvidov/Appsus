@@ -46,14 +46,13 @@ export function MailSearch({ onSetFilter, count }) {
         </form>
         <div className="search-filters">
             <button className="toggle-filter" onClick={handleChange}>Unread</button>
-            <h2 className="fa-solid fa-envelope unread-msg"><p>{count}</p></h2>
-            <label htmlFor="sort-by">View by:
-                <select name="sort-by" id="sort-by" onChange={handleChange}>
-                    <option value="">None</option>
+                <select name="sort-by" id="sort-by" placeholder="View by" onChange={handleChange}>
+                    <option disabled={true} value="">View by</option>
+                    <option value="">All</option>
                     <option value="date">Date</option>
                     <option value="title">Title</option>
                 </select>
-            </label>
+            <h2 className="fa-solid fa-envelope unread-msg"><p>{count}</p></h2>
         </div>
     </div>
 }
